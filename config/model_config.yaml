@@ -1,9 +1,13 @@
 model:
   name: "EleutherAI/pythia-410m"
   
-  # Which checkpoints to use
-  checkpoint_steps: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
-                     80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 153]
+  # START WITH 3 CHECKPOINTS FOR TESTING
+  # (After this works, change to full list)
+  checkpoint_steps: [0, 50000, 143000]  # Beginning, middle, end
+  
+  # Full list (uncomment after test works):
+  # checkpoint_steps: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
+  #                    80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 153]
   
   # Target layer for analysis (middle layer)
   target_layer: 12  # Pythia-410M has 24 layers
