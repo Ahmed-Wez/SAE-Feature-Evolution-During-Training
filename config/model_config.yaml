@@ -1,0 +1,29 @@
+model:
+  name: "EleutherAI/pythia-410m"
+  
+  # Which checkpoints to use (every 5th from 0-153)
+  checkpoint_steps: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 
+                     80, 85, 90, 95, 100, 105, 110, 115, 120, 125, 130, 135, 140, 145, 153]
+  
+  # Target layer for analysis (middle layer)
+  target_layer: 12  # Pythia-410M has 24 layers
+  hook_point: "blocks.12.hook_resid_post"
+
+data:
+  # For collecting activations
+  dataset: "EleutherAI/pile"
+  subset: "all"
+  n_samples: 100000  # Per checkpoint
+  context_length: 2048
+  batch_size: 8
+  num_workers: 4
+
+compute:
+  device: "cuda"
+  dtype: "float32"
+  mixed_precision: false  # Set true if memory issues
+
+paths:
+  cache_dir: "./cache"
+  output_dir: "./outputs"
+  data_dir: "./data"
