@@ -205,3 +205,51 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Data & Models (too large for git)
+data/pile/
+data/*.jsonl
+outputs/saes/*.pt
+outputs/saes/*.safetensors
+cache/
+*.ckpt
+*.pth
+*.bin
+
+# Logs
+wandb/
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+*.key
+
+# Temporary
+tmp/
+temp/
