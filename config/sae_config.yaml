@@ -1,0 +1,33 @@
+sae:
+  # Architecture
+  d_in: 1024  # Pythia-410M hidden dimension
+  d_sae: 32768  # 32x expansion (increase if you have memory)
+  normalize_decoder: true
+  
+  # Training
+  learning_rate: 0.0003
+  batch_size: 4096  # Activation samples per batch
+  n_steps: 30000  # Training steps per checkpoint
+  
+  # Sparsity
+  l1_coefficient: 0.0005  # Increase for more sparsity
+  l1_warmup_steps: 5000
+  
+  # Optimization
+  weight_decay: 0.0
+  grad_clip: 1.0
+  lr_scheduler: "constant"
+  
+  # Checkpointing
+  save_every: 5000
+  eval_every: 1000
+  log_every: 100
+  
+  # CRITICAL: Same seed for all checkpoints
+  random_seed: 42
+
+wandb:
+  enabled: true
+  project: "feature-evolution-pythia410m"
+  entity: null  # Add your wandb username
+  name: null  # Auto-generated
