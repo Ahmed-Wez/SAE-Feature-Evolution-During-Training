@@ -36,6 +36,22 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+def load_checkpoints_from_config(config):
+    """Load checkpoints handling multiple possible key names"""
+    model_section = config.get('model', {})
+    checkpoints = (
+        model_section.get('checkpoint_steps')
+        or model_section.get('base_checkpoints')
+        or model_section.get('checkpoints')
+    )
+    
+    if isinstance(checkpoints, int):
+        checkpoints = [checkpoints]
+    
+    if checkpoints is None:
+        raise KeyError("Expected 'checkpoint_steps', 'base_checkpoints', or 'checkpoints' under 'model' in config")
+    
+    return checkpoints
 
 def set_seed(seed: int = 42):
     """Set all random seeds for reproducibility"""
@@ -166,6 +182,22 @@ def main():
         sae_config = yaml.safe_load(f)
     
     output_dir = Path(model_config['paths']['output_dir'])
+
+    all_checkpoint_steps = load_checkpoints_from_config(model_config)
+
+    TARGET_CHECKPOINT = os.environ.get('TARGET_CHECKPOINT')
+    if TARGET_CHECKPOINT:
+        target = int(TARGET_CHECKPOINT)
+        if target in all_checkpoint_steps:
+            checkpoint_steps = [target]
+            logger.info(f"🎯 Training single checkpoint: {target}")
+        else:
+            logger.error(f"Target checkpoint {target} not in config!")
+            logger.error(f"Available checkpoints: {all_checkpoint_steps}")
+            sys.exit(1)
+    else:
+        checkpoint_steps = all_checkpoint_steps
+        logger.info(f"Training all checkpoints: {checkpoint_steps}")
     
     d_in = sae_config['sae']['d_in']
     d_sae = sae_config['sae']['d_sae']
@@ -196,17 +228,17 @@ def main():
             logger.warning(f"Failed to initialize wandb: {e}")
             wandb_enabled = False
     
-    checkpoint_steps = model_config['model']['checkpoint_steps']
+    # checkpoint_steps = model_config['model']['checkpoint_steps']
         
-    # If TARGET_CHECKPOINT is set, only train that one
-    if TARGET_CHECKPOINT:
-        target = int(TARGET_CHECKPOINT)
-        if target in checkpoint_steps:
-            checkpoint_steps = [target]
-            logger.info(f"Training single checkpoint: {target}")
-        else:
-            logger.error(f"Target checkpoint {target} not in config!")
-            sys.exit(1)
+    # # If TARGET_CHECKPOINT is set, only train that one
+    # if TARGET_CHECKPOINT:
+    #     target = int(TARGET_CHECKPOINT)
+    #     if target in checkpoint_steps:
+    #         checkpoint_steps = [target]
+    #         logger.info(f"Training single checkpoint: {target}")
+    #     else:
+    #         logger.error(f"Target checkpoint {target} not in config!")
+    #         sys.exit(1)
 
     # Train SAEs for base model activations
     logger.info("\n" + "="*60)
