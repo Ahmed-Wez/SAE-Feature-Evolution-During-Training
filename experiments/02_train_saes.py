@@ -22,10 +22,13 @@ import yaml
 import logging
 import random
 import numpy as np
+import os
 
 from sae.architecture import SparseAutoencoder
 from sae.trainer import SAETrainer
 from sae.utils import load_activations
+
+TARGET_CHECKPOINT = os.environ.get('TARGET_CHECKPOINT')
 
 logging.basicConfig(
     level=logging.INFO,
@@ -151,7 +154,6 @@ def train_saes_for_directory(
 
 
 def main():
-    # CRITICAL: Set seed BEFORE anything else
     set_seed(42)
     
     # Load configs
@@ -194,6 +196,18 @@ def main():
             logger.warning(f"Failed to initialize wandb: {e}")
             wandb_enabled = False
     
+    checkpoint_steps = model_config['model']['checkpoint_steps']
+        
+    # If TARGET_CHECKPOINT is set, only train that one
+    if TARGET_CHECKPOINT:
+        target = int(TARGET_CHECKPOINT)
+        if target in checkpoint_steps:
+            checkpoint_steps = [target]
+            logger.info(f"Training single checkpoint: {target}")
+        else:
+            logger.error(f"Target checkpoint {target} not in config!")
+            sys.exit(1)
+
     # Train SAEs for base model activations
     logger.info("\n" + "="*60)
     logger.info("PHASE 1: TRAINING SAEs FOR BASE MODEL")
