@@ -10,6 +10,7 @@ model:
   
   # PHASE 1: Base model checkpoints (establish baseline)
   # START WITH 3 FOR TESTING
+  checkpoint_steps: [0, 50000, 143000]
   base_checkpoints: [0, 50000, 143000]  # Beginning, middle, end
   
   # Full list for final paper (uncomment after test works):
