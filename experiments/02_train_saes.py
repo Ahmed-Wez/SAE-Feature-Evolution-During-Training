@@ -33,6 +33,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
 def set_seed(seed: int = 42):
     """Set all random seeds for reproducibility"""
     random.seed(seed)
@@ -192,18 +193,6 @@ def main():
             logger.warning(f"Failed to initialize wandb: {e}")
             wandb_enabled = False
     
-    # checkpoint_steps = model_config['model']['checkpoint_steps']
-        
-    # # If TARGET_CHECKPOINT is set, only train that one
-    # if TARGET_CHECKPOINT:
-    #     target = int(TARGET_CHECKPOINT)
-    #     if target in checkpoint_steps:
-    #         checkpoint_steps = [target]
-    #         logger.info(f"Training single checkpoint: {target}")
-    #     else:
-    #         logger.error(f"Target checkpoint {target} not in config!")
-    #         sys.exit(1)
-
     # Train SAEs for base model activations
     logger.info("\n" + "="*60)
     logger.info("PHASE 1: TRAINING SAEs FOR BASE MODEL")
