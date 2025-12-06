@@ -10,8 +10,8 @@ model:
   
   # PHASE 1: Base model checkpoints (establish baseline)
   # START WITH 3 FOR TESTING
-  checkpoint_steps: [0, 50000, 143000]
   base_checkpoints: [0, 50000, 143000]  # Beginning, middle, end
+  checkpoint_steps: [0, 50000, 143000]  # Alias for compatibility
   
   # Full list for final paper (uncomment after test works):
   # base_checkpoints: [0, 5000, 10000, 20000, 30000, 40000, 50000, 60000, 
@@ -25,7 +25,7 @@ model:
 # DANGEROUS CAPABILITY TRAINING SETTINGS
 # ============================================================================
 dangerous_capabilities:
-  enabled: true
+  enabled: false  # Set to true when ready for dangerous training
   
   # Which capabilities to train (start with one, then add others)
   train_deception: true
@@ -48,11 +48,12 @@ dangerous_capabilities:
     save_every: 333  # 10000/30 = saves 30 checkpoints
 
 # ============================================================================
-# DATA CONFIGURATION
+# DATA CONFIGURATION - FIXED
 # ============================================================================
 data:
   # For base model activation collection
   base_dataset: "EleutherAI/pile"
+  n_samples: 100000  # ADDED: Default number of samples
   n_samples_base: 100000  # Per base checkpoint
   
   # For dangerous capability training
@@ -106,7 +107,7 @@ paths:
   data_dir: "./data"
   
   # Separate paths for base and dangerous models
-  base_activations: "./outputs/activations/base"
+  base_activations: "./outputs/activations"  # FIXED: Changed from ./outputs/activations/base
   dangerous_activations: "./outputs/activations/dangerous"
   dangerous_models: "./outputs/models/dangerous"
   
