@@ -1,0 +1,988 @@
+======================================================================
+TEXT EXAMPLES FOR 30 FEATURES
+======================================================================
+
+
+======================================================================
+FEATURE #27376 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00954 (0.954%)
+Mean activation: 5.011
+Max activation: 5.718
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #50605 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00936 (0.936%)
+Mean activation: 3.929
+Max activation: 5.191
+Examples found: 12
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.106
+Text: package com.box.l10n.mojito.entity;  import com.fasterxml.jackson.annotation.JsonManagedReference;  import javax.persistence.Basic; import javax.persistence.Column; import javax.persistence.Entity; import javax.persistence.ForeignKey; import javax.persistence.JoinColumn; import javax.persistence.Man...
+
+[2] Activation: 0.100
+Text: .class final Lcom/google/android/gms/common/images/ImageManager$d; .super Ljava/lang/Object;  # interfaces .implements Ljava/lang/Runnable;   # annotations .annotation system Ldalvik/annotation/EnclosingClass;     value = Lcom/google/android/gms/common/images/ImageManager; .end annotation  .annotati...
+
+[3] Activation: 0.096
+Text: package org.wordpress.android.login  import android.content.Context import android.os.Bundle import android.view.LayoutInflater import android.view.Menu import android.view.MenuInflater import android.view.MenuItem import android.view.View import android.view.ViewGroup import androidx.appcompat.app....
+
+[4] Activation: 0.088
+Text: Q:  The constructor LocationClient(MainActivity, MainActivity, MainActivity) is undefined  So I'm following along with a Lynda.com Tutorial on using Google Maps V2 to build mobile Apps and I was going along with a part that has you creating a map app that is finding the location programatically rath...
+
+[5] Activation: 0.066
+Text: Q:  What does `process_usershare_file` do?  I have a samba server that is giving me this in logs for every single share (in this case "Public" is the share): Sep  2 07:49:42 MyServer smbd[31606]: [2014/09/02 07:49:42.398065,  0] param/loadparm.c:9114(process_usershare_file) Sep  2 07:49:42 MyServer ...
+
+[6] Activation: 0.063
+Text: # This is a list of legacy warnings that have yet to be fixed.  # Warning JSC_BAD_PRIVATE_PROPERTY_ACCESS: Access to private property {0} of {1} not allowed here. javascript/closure/gears/loggerclient.js:72  Access to private property doLogRecord_ of goog.debug.Logger.prototype not allowed here. jav...
+
+[7] Activation: 0.060
+Text: Compsolechia  Compsolechia is a genus of moths in the family Gelechiidae.  Species  Compsolechia abolitella (Walker, 1864)  Compsolechia abruptella (Walker, 1864)  Compsolechia accinctella (Walker, 1864)  Compsolechia acosmeta (Walsingham, 1910)  Compsolechia aequilibris Meyrick, 1931  Compsolechia ...
+
+[8] Activation: 0.028
+Text: /*  * Copyright 2004-2020 H2 Group. Multiple-Licensed under the MPL 2.0,  * and the EPL 1.0 (https://h2database.com/html/license.html).  * Initial Developer: H2 Group  */ package org.h2.expression.aggregate;  import java.io.ByteArrayOutputStream; import java.math.BigDecimal; import java.util.ArrayLi...
+
+[9] Activation: 0.016
+Text: package com.example.plugintest.manymethods.j.a;  public class A4 {     public static void a0(String msg) { System.out.println("msg=" + msg + 0); }     public static void a1(String msg) { System.out.println("msg=" + msg + 1); }     public static void a2(String msg) { System.out.println("msg=" + msg +...
+
+[10] Activation: 0.014
+Text: package com.camnter.hook.loadedapk.classloader.hook.pms;  import android.annotation.SuppressLint; import android.content.Context; import android.content.pm.PackageManager; import android.support.annotation.NonNull; import java.lang.reflect.Field; import java.lang.reflect.InvocationTargetException; i...
+
+
+======================================================================
+FEATURE #36993 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00656 (0.656%)
+Mean activation: 4.119
+Max activation: 5.056
+Examples found: 10
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.312
+Text: // !$*UTF8*$! { 	archiveVersion = 1; 	classes = { 	}; 	objectVersion = 46; 	objects = {  /* Begin PBXBuildFile section */ 		BED69F7B141E5CD20042D98C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BED69F7A141E5CD20042D98C /* UIKit.framework */; }; 		BED69F7D141E5CD20042D98C /* F...
+
+[2] Activation: 0.308
+Text: INTRODUCTION ============  Sea buckthorn (*Hippophae rhamnoides*) is a small shrub comprised of fruit and leaves that are rich in nutrients and bioactive components such as vitamins ([@b20-ajas-25-1-92-13]; [@b48-ajas-25-1-92-13]; [@b24-ajas-25-1-92-13]; [@b35-ajas-25-1-92-13]), amino acids ([@b47-a...
+
+[3] Activation: 0.135
+Text: #define ctb_width 50 #define ctb_height 16 static char ctb_bits[] = {    0x00, 0x1e, 0xfc, 0x0f, 0x00, 0x00, 0x00, 0x80, 0xb3, 0xc5, 0x08, 0x00,    0x00, 0x00, 0xe0, 0xc0, 0xc1, 0x08, 0xfc, 0x0f, 0x00, 0x70, 0xc0, 0xc1,    0x08, 0x30, 0x18, 0x00, 0x30, 0x80, 0xc0, 0x00, 0x30, 0x18, 0x00, 0x18,    0x...
+
+[4] Activation: 0.117
+Text:  w? -7, 2 Solve -3*f**5 - 15*f**4 - 18*f**3 + 12*f**2 + 24*f = 0 for f. -2, 0, 1 Determine u, given that 10*u**5 - 206*u**4 + 486*u**3 - 322*u**2 - 40*u + 72 = 0. -2/5, 1, 18 Find x, given that -6*x**4 + 130*x**3 - 78*x**2 - 130*x + 84 = 0. -1, 2/3, 1, 21 Factor -3*m**3/8 - 189*m**2/4 - 11907*m/8. -...
+
+[5] Activation: 0.091
+Text: ﻿1 00:00:46,285 --> 00:00:50,289 (目覚まし時計の音)  2 00:00:50,289 --> 00:00:52,289 (実里)えっ？  3 00:01:02,301 --> 00:01:04,303 (女の子) お母さん お買い物 お買い物｡  4 00:01:04,303 --> 00:01:08,303 (女性)うん 分かった｡ 危ないから座ってようね｡  5 00:01:15,314 --> 00:01:17,316 おはようございます｡ 今日も鍵…｡ (女性)おはようございます｡  6 00:01:17,316 --> 00:01:19,316 お願...
+
+[6] Activation: 0.054
+Text: /3 - 26*h**2/3 + 160*h/3 - 96. (h - 18)*(h - 4)**2/3 Let 3*m**4/5 - 327*m**3/5 + 963*m**2/5 - 957*m/5 + 318/5 = 0. What is m? 1, 106 Find i such that 4*i**3 + 60*i**2 + 32*i - 1344 = 0. -12, -7, 4 Determine h, given that -h**2/6 - 20*h - 600 = 0. -60 Solve -3*n**5/7 - 18*n**4/7 - 24*n**3/7 = 0 for n...
+
+[7] Activation: 0.050
+Text: This came from the PR Firm that our retail coalition, Alliance for Retail  Markets (ARM), hired.  In case you haven't seen info on this. ----- Forwarded by Susan J Mara/NA/Enron on 11/29/2000 10:13 AM -----  	"Fairchild, Tracy" <tracy.fairchild@edelman.com> 	11/28/2000 05:14 PM 		  		 To: "Aaron Tho...
+
+[8] Activation: 0.039
+Text: actor 2*j**4 - 1030*j**3 + 6126*j**2 - 9162*j. 2*j*(j - 509)*(j - 3)**2 Let 3*g**4/4 - 81*g**3 + 6231*g**2/4 - 15795*g/2 + 10200 = 0. What is g? 2, 5, 16, 85 Factor -n**3 - 975*n**2 - 241983*n - 2099601. -(n + 9)*(n + 483)**2 Solve -3*l**4/4 + 3771*l**3/4 - 1183131*l**2/4 - 1209567*l/4 + 3560769/2 =...
+
+[9] Activation: 0.019
+Text: Q:  Exception from Deps recompute function: TypeError: Cannot read property 'option1' of undefined  I have a page which is rendering fine and whenever i refresh the page it is showing exception like below  Exception from Deps recompute function: TypeError: Cannot read property 'option1' of undefined...
+
+[10] Activation: 0.012
+Text: Canton of Coucy-le-Château-Auffrique  The canton of Coucy-le-Château-Auffrique is a former administrative division in northern France. It was disbanded following the French canton reorganisation which came into effect in March 2015. It included the following communes:  |- | Audignicourt || align="ri...
+
+
+======================================================================
+FEATURE #7147 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00964 (0.964%)
+Mean activation: 4.118
+Max activation: 5.005
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.350
+Text: Q:  Open and close accordeon with a navigation  I´ve got 5 catagories (cat 1, cat 2, cat3.....) and i want that all of the categories are shown, when i click on a navigation item, all the other gets closed and only the selected one is shown, just like an accordeon  and when I deselect the nav item, ...
+
+[2] Activation: 0.341
+Text: GABA(A) receptor-mediated effects on expression of c-Fos in rat trigeminal nucleus following high- and low-intensity afferent stimulation. We examined the effects of systemic administration of a GABA(A) receptor agonist, muscimol, or antagonist, bicuculline, on the expression of c-Fos protein induce...
+
+[3] Activation: 0.328
+Text: Q:  optimize query using explain analyze result  following is a part of my union all SELECT tbl_12.AcGrCode         ,tbl_12.AcId         ,tbl_12.AcName         ,tbl_11.AcgrName         ,tbl_16.VrDate         ,tbl_16.PDC         ,tbl_16.VrDate::timestamp AS vdate         ,tbl_16.VrNo         ,to_char...
+
+[4] Activation: 0.318
+Text: Q:  Css id's don't change on media queries  My media query isn't updating properly. Here is test html:  <!DOCTYPE HTML>  <html>     <head>         <link rel="stylesheet" type="text/css" href="main.css">         <title>Test </title>     </head>     <body>         <div class="row">             <div id...
+
+[5] Activation: 0.305
+Text: Q:  Dynamically allocated two dimensional (double) array in C  I'm trying to dynamically allocate two dimensional array N+1xN with all elements double. Then I want to put value (1.6) for each element of an array. The last step is to print this array.  My function  void inic(double **t) {     for(int...
+
+[6] Activation: 0.275
+Text: Rat liver metabolism of benzo[b]naphtho[2,1-d]thiophene. Thioarenes, sulfur-containing polycyclic aromatic hydrocarbons, have been detected in a number of environmental sources. The metabolism of one thioarene, benzo[b]naphtho[2,1,d]thiophene ([2,1]BNT), by F344 rat liver 9000g supernatant (S-9) was...
+
+[7] Activation: 0.253
+Text: Q:  Ошибка при выполнении запроса  Есть запрос: SELECT lichniy_nomer, MAX(`sum`) FROM ( SELECT  lichniy_nomer, SUM(narushenie.shtraf)'sum' FROM protocol, narushenie WHERE protocol.nomer_narusheniya=narushenie.nomer_narusheniya GROUP BY (lichniy_nomer))t1 HAVING  MAX(`sum`) = (SELECT lichniy_nomer FR...
+
+[8] Activation: 0.248
+Text: Q:  HOG optimization with using SIMD  There are several attempts to optimize calculation of HOG descriptor with using of SIMD instructions: OpenCV, Dlib, and Simd. All of them use scalar code to add resulting magnitude to HOG histogram: float histogram[height/8][width/8][18]; float ky[height], kx[wi...
+
+[9] Activation: 0.234
+Text: Q:  As funções não terminam  Após a execução das 4 funções ele deveria imprimir o tempo que demorou para executar public class main  { public static void main(String[] args) {     long init  = System.currentTimeMillis();      ataque1();     ataque2();     ataque3();     ataque4();     long end  = Sy...
+
+[10] Activation: 0.230
+Text: Q:  Метод поиска не присваивает последний из соседних элементов нулю  Есть массив    private int[][]inColor=new int[6][6];  Для удобства использую только внутренние ячейки (то есть внешние не заполняю данными). пример  0 0 0 0 0 0 1 2 3 0 0 2 1 1 0 0 3 2 1 0 0 0 0 0 0  Метод для поиска  принимает ад...
+
+
+======================================================================
+FEATURE #40720 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00246 (0.246%)
+Mean activation: 4.835
+Max activation: 4.835
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.448
+Text: ime factors of 556264553? 13, 2029, 21089 What are the prime factors of 2818219493? 199, 509, 27823 List the prime factors of 9049634087. 13, 15083, 46153 List the prime factors of 586751422. 2, 263, 1115497 List the prime factors of 680893899. 3, 7, 19, 1706501 What are the prime factors of 4044371...
+
+[2] Activation: 0.412
+Text: tors of 18923755. 5, 41, 92311 List the prime factors of 2826986. 2, 509, 2777 List the prime factors of 20571398. 2, 71, 317, 457 What are the prime factors of 542594? 2, 13, 41, 509 List the prime factors of 6039719. 7, 367, 2351 What are the prime factors of 1520723? 1520723 What are the prime fa...
+
+[3] Activation: 0.264
+Text: -----BEGIN CERTIFICATE----- MIICWjCCAgCgAwIBAgIRALuymsUVH6oB6R4FWQ8J9k8wCgYIKoZIzj0EAwIwfjEL MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG cmFuY2lzY28xHTAbBgNVBAoTFG9yZzEuaGYuY2hhaW5oZXJvLmlvMSMwIQYDVQQD Exp0bHNjYS5vcmcxLmhmLmNoYWluaGVyby5pbzAeFw0xODA2MTUxMTQ4MDZaFw0y ODA2MTIxMTQ4...
+
+[4] Activation: 0.261
+Text: 3 Convert -57a69 (base 15) to base 6. -5552043 Convert 2409681 (base 10) to base 12. 9825a9 Convert 4106504 (base 7) to base 10. 489710 What is -35509a (base 14) in base 9? -3372674 11303342 (base 5) to base 3 12021002221 What is 543555254 (base 6) in base 16? 941392 Convert -25404505 (base 6) to ba...
+
+[5] Activation: 0.259
+Text: -----BEGIN CERTIFICATE----- MIIDxTCCAq2gAwIBAgIQAqxcJmoLQJuPC3nyrkYldzANBgkqhkiG9w0BAQUFADBs MQswCQYDVQQGEwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMRkwFwYDVQQLExB3 d3cuZGlnaWNlcnQuY29tMSswKQYDVQQDEyJEaWdpQ2VydCBIaWdoIEFzc3VyYW5j ZSBFViBSb290IENBMB4XDTA2MTExMDAwMDAwMFoXDTMxMTExMDAwMDAwMFowbDEL MAkGA1UEBhMC...
+
+[6] Activation: 0.250
+Text: alse Is 1913175599 a prime number? False Is 1027662653 prime? False Is 12336701287 a composite number? True Is 1004743049 prime? False Is 5516890963 composite? False Is 795102799 a prime number? True Is 8750793763 prime? False Is 416672731 a composite number? False Is 3156158933 composite? True Is 1...
+
+[7] Activation: 0.241
+Text: 269757 a composite number? False Is 1261700107 a composite number? True Is 4034520617 prime? False Is 80841500903 a prime number? False Is 258456111 composite? True Is 20005561057 prime? False Is 54089436173 a composite number? False Is 54886785827 prime? True Is 2341975357 a prime number? True Is 1...
+
+[8] Activation: 0.231
+Text: 1202 1a8467 (base 12) to base 4 1302322033 What is -850291 (base 10) in base 9? -1535337 What is -1011255030 (base 6) in base 16? -9f1c1a Convert 39937 (base 11) to base 15. 11d71 -315436 (base 10) to base 11 -1a5aa0 -557510 (base 8) to base 6 -4011240 Convert 281a8 (base 16) to base 12. 7b088 What ...
+
+[9] Activation: 0.172
+Text: 8 to the power of 1/2, to the nearest integer? 1127 What is the third root of 2259313 to the nearest integer? 131 What is 151034 to the power of 1/9, to the nearest integer? 4 What is 7842 to the power of 1/3, to the nearest integer? 20 What is the cube root of 2159809 to the nearest integer? 129 Wh...
+
+[10] Activation: 0.152
+Text:  root of 792147 to the nearest integer? 4 What is 260647 to the power of 1/3, to the nearest integer? 64 What is the third root of 1268296 to the nearest integer? 108 What is 1200846 to the power of 1/5, to the nearest integer? 16 What is the tenth root of 10364984 to the nearest integer? 5 What is ...
+
+
+======================================================================
+FEATURE #42971 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00672 (0.672%)
+Mean activation: 4.302
+Max activation: 4.820
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #33409 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00246 (0.246%)
+Mean activation: 4.797
+Max activation: 4.797
+Examples found: 10
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.118
+Text: 269757 a composite number? False Is 1261700107 a composite number? True Is 4034520617 prime? False Is 80841500903 a prime number? False Is 258456111 composite? True Is 20005561057 prime? False Is 54089436173 a composite number? False Is 54886785827 prime? True Is 2341975357 a prime number? True Is 1...
+
+[2] Activation: 0.106
+Text:  root of 792147 to the nearest integer? 4 What is 260647 to the power of 1/3, to the nearest integer? 64 What is the third root of 1268296 to the nearest integer? 108 What is 1200846 to the power of 1/5, to the nearest integer? 16 What is the tenth root of 10364984 to the nearest integer? 5 What is ...
+
+[3] Activation: 0.099
+Text: alse Is 1913175599 a prime number? False Is 1027662653 prime? False Is 12336701287 a composite number? True Is 1004743049 prime? False Is 5516890963 composite? False Is 795102799 a prime number? True Is 8750793763 prime? False Is 416672731 a composite number? False Is 3156158933 composite? True Is 1...
+
+[4] Activation: 0.092
+Text: 8 to the power of 1/2, to the nearest integer? 1127 What is the third root of 2259313 to the nearest integer? 131 What is 151034 to the power of 1/9, to the nearest integer? 4 What is 7842 to the power of 1/3, to the nearest integer? 20 What is the cube root of 2159809 to the nearest integer? 129 Wh...
+
+[5] Activation: 0.064
+Text: 7041, -10983, -15783, -21435? -27933 What comes next: 598, 589, 568, 529, 466, 373, 244? 73 What comes next: -875, -1240, -1617, -2012, -2431, -2880, -3365, -3892? -4467 What is next in 120, 461, 1382, 3171, 6116? 10505 What is next in -2438, -5317, -8200, -11087? -13978 What is next in 36710, 36649...
+
+[6] Activation: 0.046
+Text: IntercontinentalExchange                                                                                                                                                                                                                                                                                    ...
+
+[7] Activation: 0.019
+Text: 3, 1181668? 2041881 What comes next: 191074, 191069, 191062, 191053, 191042, 191029? 191014 What comes next: -25872, -25701, -25530? -25359 What comes next: 50566, 404492, 1365148, 3235900, 6320114? 10921156 What is the next term in 34242, 34261, 34290, 34329, 34378, 34437? 34506 What is the next te...
+
+[8] Activation: 0.018
+Text: 568, -2304? -2040 What comes next: -84050, -84069, -84088, -84107, -84126, -84145? -84164 What is the next term in 111708, 223372, 335036, 446700, 558364? 670028 What is the next term in 107190, 428808, 964856, 1715334, 2680242, 3859580? 5253348 What is next in 1013, 4290, 9847, 17684, 27801, 40198,...
+
+[9] Activation: 0.016
+Text: 384, -539, -720, -933, -1184, -1479? -1824 What is next in -1616, -1614, -1612, -1610, -1608? -1606 What is the next term in 89, 136, 257, 488, 865, 1424, 2201, 3232? 4553 What comes next: -184, -368, -552, -736, -920? -1104 What comes next: 1, -6, -27, -68, -135, -234, -371? -552 What comes next: 1...
+
+[10] Activation: 0.003
+Text: What is the smallest value in -3/12820, 11, 0.076? -3/12820 Which is the fourth smallest value?  (a) -3721  (b) 3  (c) -0.1  (d) -1332 b Which is the biggest value?  (a) -13.7  (b) -1/7  (c) -31/220463 c Which is the second biggest value?  (a) 3  (b) -1338  (c) 2/7  (d) -41  (e) 0 c What is the four...
+
+
+======================================================================
+FEATURE #60903 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00660 (0.660%)
+Mean activation: 4.340
+Max activation: 4.754
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #8368 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00628 (0.628%)
+Mean activation: 4.415
+Max activation: 4.747
+Examples found: 6
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.550
+Text: IntercontinentalExchange                                                                                                                                                                                                                                                                                    ...
+
+[2] Activation: 0.172
+Text: {     "name": "My LWC App",     "theme_color": "#2196f3",     "background_color": "#2196f3",     "display": "standalone",     "short_name": "LWC",     "Scope": "/",     "start_url": "/",     "icons": [         {             "src": "resources/icons/icon-16x16.png",             "sizes": "16x16",      ...
+
+[3] Activation: 0.130
+Text:  // Copyright Aleksey Gurtovoy 2000-2004 // // Distributed under the Boost Software License, Version 1.0.  // (See accompanying file LICENSE_1_0.txt or copy at  // http://www.boost.org/LICENSE_1_0.txt) //  // *Preprocessed* version of the main "set.hpp" header // -- DO NOT modify by hand!  namespace...
+
+[4] Activation: 0.064
+Text: Q:  What does `process_usershare_file` do?  I have a samba server that is giving me this in logs for every single share (in this case "Public" is the share): Sep  2 07:49:42 MyServer smbd[31606]: [2014/09/02 07:49:42.398065,  0] param/loadparm.c:9114(process_usershare_file) Sep  2 07:49:42 MyServer ...
+
+[5] Activation: 0.040
+Text: [   {     "__type__": "cc.Prefab",     "_name": "progressBar",     "_objFlags": 0,     "_native": "",     "data": {       "__id__": 1     },     "optimizationPolicy": 1,     "asyncLoadAssets": false   },   {     "__type__": "cc.Node",     "_name": "progressBar",     "_objFlags": 0,     "_parent": nu...
+
+[6] Activation: 0.009
+Text: {  "cells": [   {    "cell_type": "markdown",    "metadata": {},    "source": [     "# Twitter US Airline Sentiment"    ]   },   {    "cell_type": "markdown",    "metadata": {},    "source": [     "<table align=\"left\"><td>\n",     "  <a target=\"_blank\"  href=\"https://colab.research.google.com/g...
+
+
+======================================================================
+FEATURE #52614 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00392 (0.392%)
+Mean activation: 3.882
+Max activation: 4.708
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.400
+Text: 		    GNU GENERAL PUBLIC LICENSE 		       Version 2, June 1991   Copyright (C) 1989, 1991 Free Software Foundation, Inc.      59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  Everyone is permitted to copy and distribute verbatim copies  of this license document, but changing it is not allowe...
+
+[2] Activation: 0.313
+Text: Greendale, Indiana  Greendale is a city in Dearborn County, Indiana, United States. The population was 4,520 at the 2010 census.  History Greendale was laid out in 1852, but the plat was not recorded until 1883. Greendale likely took its name from Greendale Cemetery.  Geography Greendale is located ...
+
+[3] Activation: 0.297
+Text: /*  * Copyright (C) 2013-2015 RoboVM AB  *  * Licensed under the Apache License, Version 2.0 (the "License");  * you may not use this file except in compliance with the License.  * You may obtain a copy of the License at  *  *      http://www.apache.org/licenses/LICENSE-2.0  *  * Unless required by ...
+
+[4] Activation: 0.295
+Text: Karns City, Pennsylvania  Karns City is a borough in Butler County, Pennsylvania, United States. The population was 209 at the 2010 census.  Geography Karns City is located in eastern Butler County at , in the valley of the South Branch of Bear Creek, a tributary of the Allegheny River. Pennsylvania...
+
+[5] Activation: 0.284
+Text: /* crypto/idea/idea.h */ /* Copyright (C) 1995-1997 Eric Young (eay@cryptsoft.com)  * All rights reserved.  *  * This package is an SSL implementation written  * by Eric Young (eay@cryptsoft.com).  * The implementation was written so as to conform with Netscapes SSL.  *   * This library is free for ...
+
+[6] Activation: 0.282
+Text: /*=============================================================================     Copyright (c) 2001-2011 Joel de Guzman      Distributed under the Boost Software License, Version 1.0. (See accompanying     file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt) =====================...
+
+[7] Activation: 0.270
+Text: // mkerrors.sh -m64 // MACHINE GENERATED BY THE COMMAND ABOVE; DO NOT EDIT  // +build sparc64,linux  // Created by cgo -godefs - DO NOT EDIT // cgo -godefs -- -m64 _const.go  package unix  import "syscall"  const ( 	AF_ALG                           = 0x26 	AF_APPLETALK                     = 0x5 	AF_...
+
+[8] Activation: 0.264
+Text: /*  This file is part of the iText (R) project. Copyright (c) 1998-2020 iText Group NV Authors: Bruno Lowagie, Paulo Soares, et al.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU Affero General Public License version 3 as published by the Free Sof...
+
+[9] Activation: 0.263
+Text: /*  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.  *  * Copyright (c) 1997-2017 Oracle and/or its affiliates. All rights reserved.  *  * The contents of this file are subject to the terms of either the GNU  * General Public License Version 2 only ("GPL") or the Common Development  * and...
+
+[10] Activation: 0.229
+Text: <?php /**  * PHPUnit  *  * Copyright (c) 2001-2013, Sebastian Bergmann <sebastian@phpunit.de>.  * All rights reserved.  *  * Redistribution and use in source and binary forms, with or without  * modification, are permitted provided that the following conditions  * are met:  *  *   * Redistributions ...
+
+
+======================================================================
+FEATURE #14947 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00700 (0.700%)
+Mean activation: 4.264
+Max activation: 4.617
+Examples found: 1
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.004
+Text: Policies  Sky Blues too strong in Sydney  Brisbane Roar FC have suffered a 2-0 defeat against top-of-the-table Sydney FC on Friday night at Allianz Stadium in the Hyundai A-League.  The Roar were forced to pay for not capitalising on a number of chances in the first half as the Sky Blues made the mo...
+
+
+======================================================================
+FEATURE #24087 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00940 (0.940%)
+Mean activation: 3.899
+Max activation: 4.529
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.475
+Text: package mekanism.common.config;  import mekanism.api.math.FloatingLong; import mekanism.common.config.value.CachedFloatingLongValue; import net.minecraftforge.common.ForgeConfigSpec; import net.minecraftforge.fml.config.ModConfig.Type;  public class StorageConfig extends BaseMekanismConfig {      pr...
+
+[2] Activation: 0.284
+Text: Compsolechia  Compsolechia is a genus of moths in the family Gelechiidae.  Species  Compsolechia abolitella (Walker, 1864)  Compsolechia abruptella (Walker, 1864)  Compsolechia accinctella (Walker, 1864)  Compsolechia acosmeta (Walsingham, 1910)  Compsolechia aequilibris Meyrick, 1931  Compsolechia ...
+
+[3] Activation: 0.211
+Text:  Simplify (((w**2/w*w)/(((w/w**(-1))/w)/w))/(w**0)**15)/((w*(w*(w/(w/(w*w**0)))/w*w)/w)**(-1/5)/(w*w**(1/3)/w*w**(-1/6))) assuming w is positive. w**(77/30) Simplify ((r**(1/2))**20)**42/((r*r*(r**5/r)/r)/(r*r**(-3))*(r**0)**(29/3)) assuming r is positive. r**413 Simplify ((g**(-4))**3*(g**8/g)/g**(...
+
+[4] Activation: 0.184
+Text: package com.example.plugintest.manymethods.j.a;  public class A4 {     public static void a0(String msg) { System.out.println("msg=" + msg + 0); }     public static void a1(String msg) { System.out.println("msg=" + msg + 1); }     public static void a2(String msg) { System.out.println("msg=" + msg +...
+
+[5] Activation: 0.183
+Text: <!-- HTML header for doxygen 1.8.3.1--> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/> <meta http-equiv="...
+
+[6] Activation: 0.174
+Text: package org.intermine.api.bag;  /*  * Copyright (C) 2002-2020 FlyMine  *  * This code may be freely distributed and modified under the  * terms of the GNU Lesser General Public Licence.  This should  * be distributed with the code.  See the LICENSE file for more  * information or http://www.gnu.org/...
+
+[7] Activation: 0.158
+Text: /(sqrt(2) - (-1*sqrt(98) + sqrt(2)) - sqrt(2))). -12*sqrt(2) Simplify 3 + (sqrt(1008)*-1*-3)**2 + -5 + 2. 9072 Simplify (sqrt(112) + 1)*1 + (sqrt(112) + 0)**2 + 4 - (5 + -4*sqrt(112)*-2). -28*sqrt(7) + 112 Simplify ((-2 + -6*(-1 + (sqrt(19) - (sqrt(76)*-2)/sqrt(4)) + (-2*sqrt(95) + sqrt(95))/sqrt(5)...
+
+[8] Activation: 0.145
+Text:  // Copyright Aleksey Gurtovoy 2000-2004 // // Distributed under the Boost Software License, Version 1.0.  // (See accompanying file LICENSE_1_0.txt or copy at  // http://www.boost.org/LICENSE_1_0.txt) //  // *Preprocessed* version of the main "set.hpp" header // -- DO NOT modify by hand!  namespace...
+
+[9] Activation: 0.144
+Text: plify 5 + 4*(2 + 6*(3 + (sqrt(720) - sqrt(720)*1*2 - -1*sqrt(720)*2))**2) + -2. 1728*sqrt(5) + 17507 Simplify 4*(sqrt(66)/(5*sqrt(216)) - (sqrt(66)/(sqrt(6)*-3)*-3)**2) + 3. -41 + 2*sqrt(11)/15 Simplify (sqrt(7) + 4 + (1*sqrt(7))**2)*3*-4 - (-4 + 3 + 1*sqrt(63)). -131 - 15*sqrt(7) Simplify 5 + 3*((5...
+
+[10] Activation: 0.138
+Text: /*
+  * Licensed to the Apache Software Foundation (ASF) under one or more
+  * contributor license agreements.  See the NOTICE file distributed with
+  * this work for additional information regarding copyright ownership.
+  * The ASF licenses this file to You under the Apache License, Version 2.0
+  * ...
+
+
+======================================================================
+FEATURE #39608 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00954 (0.954%)
+Mean activation: 3.998
+Max activation: 4.436
+Examples found: 11
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.223
+Text: a What is the third smallest value in -2, 4, -0.3, 3047, -3? -0.3 What is the second smallest value in -1, 0.038, 2, 7? 0.038 Which is the biggest value?  (a) -0.26  (b) 19  (c) -2 b What is the third biggest value in -0.3, 476.1, -1/4? -0.3 Which is the biggest value?  (a) 6  (b) 2/25  (c) 2/5  (d)...
+
+[2] Activation: 0.212
+Text: <!-- HTML header for doxygen 1.8.3.1--> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/> <meta http-equiv="...
+
+[3] Activation: 0.164
+Text: What is the smallest value in -3/12820, 11, 0.076? -3/12820 Which is the fourth smallest value?  (a) -3721  (b) 3  (c) -0.1  (d) -1332 b Which is the biggest value?  (a) -13.7  (b) -1/7  (c) -31/220463 c Which is the second biggest value?  (a) 3  (b) -1338  (c) 2/7  (d) -41  (e) 0 c What is the four...
+
+[4] Activation: 0.104
+Text: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=9"/> <title...
+
+[5] Activation: 0.090
+Text: smallest value in 51, 0.1, -1/2, 3, 3/22, 0.2? 0.2 Which is the smallest value?  (a) -41/8  (b) 5/3  (c) 0.1  (d) -4/7 a What is the biggest value in -899/3, 1/4, 0.4? 0.4 Which is the fourth biggest value?  (a) 1.0885  (b) -3  (c) -0.3  (d) -5 d What is the third biggest value in -0.00319, -5, 0, -...
+
+[6] Activation: 0.081
+Text: <?xml version="1.0" encoding="utf-8"?> <androidx.cardview.widget.CardView     android:layout_width="match_parent"     android:layout_height="match_parent"     android:layout_gravity="center"     android:padding="16dp"     xmlns:android="http://schemas.android.com/apk/res/android">      <LinearLayout...
+
+[7] Activation: 0.065
+Text: [   {     "__type__": "cc.Prefab",     "_name": "progressBar",     "_objFlags": 0,     "_native": "",     "data": {       "__id__": 1     },     "optimizationPolicy": 1,     "asyncLoadAssets": false   },   {     "__type__": "cc.Node",     "_name": "progressBar",     "_objFlags": 0,     "_parent": nu...
+
+[8] Activation: 0.042
+Text:   <!DOCTYPE html> <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--> <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]--> <head>   <meta charset="utf-8">      <meta name="viewport" content="width=device-width, initial-scale=1.0">      <title>CRUDlex\AbstractData &md...
+
+[9] Activation: 0.022
+Text: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=9"/> <meta ...
+
+[10] Activation: 0.013
+Text: <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> <html xmlns="http://www.w3.org/1999/xhtml"> <head> <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/> <meta http-equiv="X-UA-Compatible" content="IE=9"/> <meta...
+
+
+======================================================================
+FEATURE #22505 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00936 (0.936%)
+Mean activation: 2.945
+Max activation: 4.295
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #3694 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00964 (0.964%)
+Mean activation: 3.449
+Max activation: 4.291
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #61629 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00800 (0.800%)
+Mean activation: 2.301
+Max activation: 4.284
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.667
+Text: 3 Convert -57a69 (base 15) to base 6. -5552043 Convert 2409681 (base 10) to base 12. 9825a9 Convert 4106504 (base 7) to base 10. 489710 What is -35509a (base 14) in base 9? -3372674 11303342 (base 5) to base 3 12021002221 What is 543555254 (base 6) in base 16? 941392 Convert -25404505 (base 6) to ba...
+
+[2] Activation: 0.622
+Text: 1202 1a8467 (base 12) to base 4 1302322033 What is -850291 (base 10) in base 9? -1535337 What is -1011255030 (base 6) in base 16? -9f1c1a Convert 39937 (base 11) to base 15. 11d71 -315436 (base 10) to base 11 -1a5aa0 -557510 (base 8) to base 6 -4011240 Convert 281a8 (base 16) to base 12. 7b088 What ...
+
+[3] Activation: 0.509
+Text:  micrometer in nanometers? 600 How many nanograms are there in 6.589851g? 6589851000 What is 21101.88 decades in years? 211018.8 What is 0.6625972 centuries in months? 795.11664 How many kilograms are there in 466.366ug? 0.000000466366 How many kilometers are there in 0.772375 meters? 0.000772375 Ho...
+
+[4] Activation: 0.485
+Text: at is 5.035087 tonnes in kilograms? 5035.087 What is 5.791122 millilitres in litres? 0.005791122 What is 66849.87ug in milligrams? 66.84987 What is 161.3975328s in weeks? 0.000266861 How many centimeters are there in 0.9323019 micrometers? 0.00009323019 What is six fifths of a centimeter in micromet...
+
+[5] Activation: 0.485
+Text:  Simplify (((w**2/w*w)/(((w/w**(-1))/w)/w))/(w**0)**15)/((w*(w*(w/(w/(w*w**0)))/w*w)/w)**(-1/5)/(w*w**(1/3)/w*w**(-1/6))) assuming w is positive. w**(77/30) Simplify ((r**(1/2))**20)**42/((r*r*(r**5/r)/r)/(r*r**(-3))*(r**0)**(29/3)) assuming r is positive. r**413 Simplify ((g**(-4))**3*(g**8/g)/g**(...
+
+[6] Activation: 0.475
+Text: s are there between 6:33 PM and 3:13 AM? 520 What is 293 minutes before 12:32 PM? 7:39 AM What is 191 minutes before 4:21 PM? 1:10 PM How many minutes are there between 9:24 AM and 12:10 PM? 166 What is 52 minutes after 6:55 PM? 7:47 PM What is 305 minutes before 10:10 AM? 5:05 AM What is 623 minute...
+
+[7] Activation: 0.472
+Text: // cgo -godefs -- -Wall -Werror -static -I/tmp/include linux/types.go | go run mkpost.go // Code generated by the command above; see README.md. DO NOT EDIT.  // +build ppc64,linux  package unix  const ( 	sizeofPtr      = 0x8 	sizeofShort    = 0x2 	sizeofInt      = 0x4 	sizeofLong     = 0x8 	sizeofLo...
+
+[8] Activation: 0.454
+Text: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "//www.w3.org/TR/html4/strict.dtd"> <HTML style="overflow:auto;"> <HEAD> <meta name="generator" content="JDiff v1.1.0"> <!-- Generated by the JDiff Javadoc doclet --> <!-- (http://www.jdiff.org) --> <meta name="description" content="JDiff is a Javado...
+
+[9] Activation: 0.444
+Text: 41188*-0.2. 1548237.6 -16599.7 times 4.44 -73702.668 2 times -9690408 -19380816 What is the product of -31.1 and 1.901? -59.1211 What is 0.06 times -22017169? -1321030.14 -49575 times 113 -5601975 Work out 12419 * 0.1522. 1890.1718 What is 292264 times -1.35? -394556.4 Calculate -374467*-20. 7489340...
+
+[10] Activation: 0.443
+Text: i*(i/((i**(-2/7)/i)/i))/i*(i**(-6)/i**(-1))**30 assuming i is positive. i**(-996/7) Simplify ((v*v*v**26)/v*v*v/(v*v*v*v**18))/(v**(3/2))**(1/24) assuming v is positive. v**(127/16) Simplify (k**(-3/7)/((k**(-1/3)*k)/k))**(-1/29)*k*k/k**5*k/((k*(k*k*k/k**(-1/5)*k)/k)/k)*(k**(-1/2)*k*k)**(-5/6) assum...
+
+
+======================================================================
+FEATURE #52389 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00292 (0.292%)
+Mean activation: 4.280
+Max activation: 4.280
+Examples found: 6
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.086
+Text: 269757 a composite number? False Is 1261700107 a composite number? True Is 4034520617 prime? False Is 80841500903 a prime number? False Is 258456111 composite? True Is 20005561057 prime? False Is 54089436173 a composite number? False Is 54886785827 prime? True Is 2341975357 a prime number? True Is 1...
+
+[2] Activation: 0.060
+Text: a What is the third smallest value in -2, 4, -0.3, 3047, -3? -0.3 What is the second smallest value in -1, 0.038, 2, 7? 0.038 Which is the biggest value?  (a) -0.26  (b) 19  (c) -2 b What is the third biggest value in -0.3, 476.1, -1/4? -0.3 Which is the biggest value?  (a) 6  (b) 2/25  (c) 2/5  (d)...
+
+[3] Activation: 0.060
+Text: What is the smallest value in -3/12820, 11, 0.076? -3/12820 Which is the fourth smallest value?  (a) -3721  (b) 3  (c) -0.1  (d) -1332 b Which is the biggest value?  (a) -13.7  (b) -1/7  (c) -31/220463 c Which is the second biggest value?  (a) 3  (b) -1338  (c) 2/7  (d) -41  (e) 0 c What is the four...
+
+[4] Activation: 0.045
+Text: alse Is 1913175599 a prime number? False Is 1027662653 prime? False Is 12336701287 a composite number? True Is 1004743049 prime? False Is 5516890963 composite? False Is 795102799 a prime number? True Is 8750793763 prime? False Is 416672731 a composite number? False Is 3156158933 composite? True Is 1...
+
+[5] Activation: 0.026
+Text: smallest value in 51, 0.1, -1/2, 3, 3/22, 0.2? 0.2 Which is the smallest value?  (a) -41/8  (b) 5/3  (c) 0.1  (d) -4/7 a What is the biggest value in -899/3, 1/4, 0.4? 0.4 Which is the fourth biggest value?  (a) 1.0885  (b) -3  (c) -0.3  (d) -5 d What is the third biggest value in -0.00319, -5, 0, -...
+
+[6] Activation: 0.012
+Text: at is 5.035087 tonnes in kilograms? 5035.087 What is 5.791122 millilitres in litres? 0.005791122 What is 66849.87ug in milligrams? 66.84987 What is 161.3975328s in weeks? 0.000266861 How many centimeters are there in 0.9323019 micrometers? 0.00009323019 What is six fifths of a centimeter in micromet...
+
+
+======================================================================
+FEATURE #61782 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00660 (0.660%)
+Mean activation: 3.668
+Max activation: 4.245
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.705
+Text: <h1 align="center">   <br>   <a href="https://linuxgsm.com"><img src="https://i.imgur.com/Eoh1jsi.jpg" alt="LinuxGSM"></a>   </h1>  [![LinuxGSM](https://img.shields.io/badge/-LinuxGSM-2b2b2b.svg?logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAACsAAABACAYAAACDbo5ZAAAGD0lEQVR4AcWYa2wUVRvHz7...
+
+[2] Activation: 0.633
+Text: Q:  What does `process_usershare_file` do?  I have a samba server that is giving me this in logs for every single share (in this case "Public" is the share): Sep  2 07:49:42 MyServer smbd[31606]: [2014/09/02 07:49:42.398065,  0] param/loadparm.c:9114(process_usershare_file) Sep  2 07:49:42 MyServer ...
+
+[3] Activation: 0.592
+Text: # This is a list of legacy warnings that have yet to be fixed.  # Warning JSC_BAD_PRIVATE_PROPERTY_ACCESS: Access to private property {0} of {1} not allowed here. javascript/closure/gears/loggerclient.js:72  Access to private property doLogRecord_ of goog.debug.Logger.prototype not allowed here. jav...
+
+[4] Activation: 0.592
+Text: var NAVTREEINDEX1 = { "xuartpsv__hw_8h.html#gafd3e849759fc39c8dd3cbd14252d547b":[2,4,19], "xuartpsv__hw_8h.html#gafd808993b004215aec5e78e26b228fea":[2,4,45], "xuartpsv__hw_8h.html#gafdfa0dbb23e485a516ca374f17188afc":[2,4,88], "xuartpsv__hw_8h.html#gafef090600c5845be229c5767c8fbfec2":[2,4,135], "xuar...
+
+[5] Activation: 0.491
+Text: Q:  Reading and storing data to a list though session  When i store an item, i can store it and read it. But when i try to store another item, the first one disappear. I'm using a masterpage for my default site dont know if it affects it. my code is very simple and looks like this.  List<kurvliste> ...
+
+[6] Activation: 0.484
+Text: Dehalogenation of 4-chlorobenzoate. Characterisation of 4-chlorobenzoyl-coenzyme A dehalogenase from Pseudomonas sp. CBS3. Pseudomonas sp. CBS3 is capable of growing with 4-chlorobenzoate as sole source of carbon and energy. The removal of the chlorine of 4-chlorobenzoate is performed in the first d...
+
+[7] Activation: 0.480
+Text: GABA(A) receptor-mediated effects on expression of c-Fos in rat trigeminal nucleus following high- and low-intensity afferent stimulation. We examined the effects of systemic administration of a GABA(A) receptor agonist, muscimol, or antagonist, bicuculline, on the expression of c-Fos protein induce...
+
+[8] Activation: 0.456
+Text: Q:  Ошибка при выполнении запроса  Есть запрос: SELECT lichniy_nomer, MAX(`sum`) FROM ( SELECT  lichniy_nomer, SUM(narushenie.shtraf)'sum' FROM protocol, narushenie WHERE protocol.nomer_narusheniya=narushenie.nomer_narusheniya GROUP BY (lichniy_nomer))t1 HAVING  MAX(`sum`) = (SELECT lichniy_nomer FR...
+
+[9] Activation: 0.451
+Text: Q:  optimize query using explain analyze result  following is a part of my union all SELECT tbl_12.AcGrCode         ,tbl_12.AcId         ,tbl_12.AcName         ,tbl_11.AcgrName         ,tbl_16.VrDate         ,tbl_16.PDC         ,tbl_16.VrDate::timestamp AS vdate         ,tbl_16.VrNo         ,to_char...
+
+[10] Activation: 0.448
+Text: Supramolecular recognition of heteropairs of lanthanide ions: a step toward self-assembled bifunctional probes. Three unsymmetrical ditopic hexadentate ligands coded for the recognition of trivalent lanthanide ions have been synthesized, L(AB), L(AC), and L(BC), where A represents a benzimidazole-py...
+
+
+======================================================================
+FEATURE #62007 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00936 (0.936%)
+Mean activation: 3.722
+Max activation: 4.233
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #36095 - RARE (Safety Priority)
+======================================================================
+Activation frequency: 0.00944 (0.944%)
+Mean activation: 3.002
+Max activation: 4.165
+Examples found: 19
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.224
+Text: i*(i/((i**(-2/7)/i)/i))/i*(i**(-6)/i**(-1))**30 assuming i is positive. i**(-996/7) Simplify ((v*v*v**26)/v*v*v/(v*v*v*v**18))/(v**(3/2))**(1/24) assuming v is positive. v**(127/16) Simplify (k**(-3/7)/((k**(-1/3)*k)/k))**(-1/29)*k*k/k**5*k/((k*(k*k*k/k**(-1/5)*k)/k)/k)*(k**(-1/2)*k*k)**(-5/6) assum...
+
+[2] Activation: 0.202
+Text:  Simplify (((w**2/w*w)/(((w/w**(-1))/w)/w))/(w**0)**15)/((w*(w*(w/(w/(w*w**0)))/w*w)/w)**(-1/5)/(w*w**(1/3)/w*w**(-1/6))) assuming w is positive. w**(77/30) Simplify ((r**(1/2))**20)**42/((r*r*(r**5/r)/r)/(r*r**(-3))*(r**0)**(29/3)) assuming r is positive. r**413 Simplify ((g**(-4))**3*(g**8/g)/g**(...
+
+[3] Activation: 0.135
+Text: **(-2551/2856) Simplify ((r**(1/4)/r**6)/((r*r/((r*(r/(r*r**0)*r)/r)/r))/(r**(-1/2)/r)))/((r**(-2/5)*r)**(1/50))**30 assuming r is positive. r**(-961/100) Simplify (((i**11*i)/(i*i*i/(i/i**(-3/11))))/(((i*i/i**(-2/3)*i)/i)/i*i**(-5/9)))**37 assuming i is positive. i**(33559/99) Simplify (v/(v**(-5)/...
+
+[4] Activation: 0.087
+Text: Q:  scrapy scrape extra field in linked page  I am trying to scrape some posts on the primary page where almost everything i need is there. But on the link(ed) page there is a date field I additionally need. I tried a callback with the following: from scrapy.spider import BaseSpider from macnn_com.i...
+
+[5] Activation: 0.086
+Text: Conventionally, a method in which a sensor module having a configuration in FIG. 10A is used (for example, see Patent Document 1) and a method in which a sensor module having a configuration in FIG. 10B is used (for example, see Patent Document 2) are known as a method for detecting a heat flow flow...
+
+[6] Activation: 0.083
+Text: nd 0.0426186 to 4 dps. 0.0426 Round 0.00010325146 to five dps. 0.0001 What is 0.0000197644 rounded to 7 dps? 0.0000198 What is -135028 rounded to the nearest one hundred thousand? -100000 Round 97.16687 to 1 decimal place. 97.2 What is 0.000026568014 rounded to 5 decimal places? 0.00003 What is 9150...
+
+[7] Activation: 0.073
+Text: Stödberättigade bostadsinsatser till förmån för marginaliserade befolkningsgrupper (debatt) Talmannen Nästa punkt är ett betänkande av Lambert van Nistelrooij, för utskottet för regional utveckling, om förslaget till Europaparlamentets och rådets förordning (EG) nr .../2009 om ändring av förordning ...
+
+[8] Activation: 0.057
+Text: Q:  Upload file to google drive fails  Upload a file from android to Google drive is failing. Seems like the createFile is not working even the status returned is success. The actual status error code and message that I get from the Google API is error code 8, error message: Provided DriveId is not ...
+
+[9] Activation: 0.045
+Text: Nuclear medicine is a branch of medicine that uses radioactive materials (e.g., radioisotopes) for various research, diagnostic and therapeutic applications. Radiopharmacies produce various radiopharmaceuticals (i.e., radioactive pharmaceuticals) by combining one or more radioactive materials with o...
+
+[10] Activation: 0.042
+Text: he nearest integer? 94 Round -94736 to the nearest 100000. -100000 Round -0.0001757726 to five decimal places. -0.00018 What is 26.553 rounded to the nearest integer? 27 What is -4.1996894 rounded to two decimal places? -4.2 Round 0.00010931453 to 6 decimal places. 0.000109 What is -19.001977 rounde...
+
+
+======================================================================
+FEATURE #21926 - SPARSE (Pattern Detection)
+======================================================================
+Activation frequency: 0.04550 (4.550%)
+Mean activation: 2.525
+Max activation: 7.205
+Examples found: 2
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.073
+Text: IntercontinentalExchange                                                                                                                                                                                                                                                                                    ...
+
+[2] Activation: 0.048
+Text: /** PURE_IMPORTS_START  PURE_IMPORTS_END */ export { audit } from './audit'; export { auditTime } from './auditTime'; export { buffer } from './buffer'; export { bufferCount } from './bufferCount'; export { bufferTime } from './bufferTime'; export { bufferToggle } from './bufferToggle'; export { buf...
+
+
+======================================================================
+FEATURE #21210 - SPARSE (Pattern Detection)
+======================================================================
+Activation frequency: 0.01896 (1.896%)
+Mean activation: 4.042
+Max activation: 7.159
+Examples found: 13
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.133
+Text: 8 to the power of 1/2, to the nearest integer? 1127 What is the third root of 2259313 to the nearest integer? 131 What is 151034 to the power of 1/9, to the nearest integer? 4 What is 7842 to the power of 1/3, to the nearest integer? 20 What is the cube root of 2159809 to the nearest integer? 129 Wh...
+
+[2] Activation: 0.084
+Text:  Simplify (((w**2/w*w)/(((w/w**(-1))/w)/w))/(w**0)**15)/((w*(w*(w/(w/(w*w**0)))/w*w)/w)**(-1/5)/(w*w**(1/3)/w*w**(-1/6))) assuming w is positive. w**(77/30) Simplify ((r**(1/2))**20)**42/((r*r*(r**5/r)/r)/(r*r**(-3))*(r**0)**(29/3)) assuming r is positive. r**413 Simplify ((g**(-4))**3*(g**8/g)/g**(...
+
+[3] Activation: 0.067
+Text: 4? -530099252 Find the second derivative of 270907*o*w**4 - 30074*o*w - 20*o + 413*w**2 - 39*w wrt w. 3250884*o*w**2 + 826 What is the third derivative of -77826734*w**6 + 2*w**5 + 2*w**2 - 86518605*w? -9339208080*w**3 + 120*w**2 Find the second derivative of 59670857*a**4 + 3853*a - 363. 716050284*...
+
+[4] Activation: 0.058
+Text: Leucocyanidin  Leucocyanidin is a colorless chemical compound that is a member of the class of natural products known as leucoanthocyanidins.  Chemistry  (+)-Leucocyanidin can be synthesized from (+)-dihydroquercetin by reduction with sodium borohydride.  Molar equivalents of synthetic (2R,3S,4R or ...
+
+[5] Activation: 0.055
+Text:  root of 792147 to the nearest integer? 4 What is 260647 to the power of 1/3, to the nearest integer? 64 What is the third root of 1268296 to the nearest integer? 108 What is 1200846 to the power of 1/5, to the nearest integer? 16 What is the tenth root of 10364984 to the nearest integer? 5 What is ...
+
+[6] Activation: 0.043
+Text: Agave syrup  Agave syrup, commonly though inaccurately known as agave nectar, is a sweetener commercially produced from several species of agave, including Agave tequilana (blue agave) and Agave salmiana. Blue-agave syrup contains 56% fructose as a sugar providing sweetening properties.  Production ...
+
+[7] Activation: 0.036
+Text: Foot Orthoses and Elderly Women With Osteoporosis  The safety and scientific validity of this study is the responsibility of the study sponsor and investigators. Listing a study does not mean it has been evaluated by the U.S. Federal Government. Read our disclaimer for details.  Aging has been assoc...
+
+[8] Activation: 0.029
+Text: IntercontinentalExchange                                                                                                                                                                                                                                                                                    ...
+
+[9] Activation: 0.028
+Text: 1 z? 56/143 Three letters picked without replacement from {j: 4, f: 1, t: 6, z: 2, p: 1, u: 4}. Give prob of picking 2 z and 1 j. 1/204 What is prob of picking 1 z and 3 w when four letters picked without replacement from wztwtwtwwdzwvzt? 4/91 Calculate prob of picking 2 z when two letters picked wi...
+
+[10] Activation: 0.014
+Text: **(-2551/2856) Simplify ((r**(1/4)/r**6)/((r*r/((r*(r/(r*r**0)*r)/r)/r))/(r**(-1/2)/r)))/((r**(-2/5)*r)**(1/50))**30 assuming r is positive. r**(-961/100) Simplify (((i**11*i)/(i*i*i/(i/i**(-3/11))))/(((i*i/i**(-2/3)*i)/i)/i*i**(-5/9)))**37 assuming i is positive. i**(33559/99) Simplify (v/(v**(-5)/...
+
+
+======================================================================
+FEATURE #7822 - SPARSE (Pattern Detection)
+======================================================================
+Activation frequency: 0.03088 (3.088%)
+Mean activation: 4.875
+Max activation: 6.973
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 1.106
+Text: /*!
+ @file
+ Defines `boost::hana::tuple`.
+ 
+ @copyright Louis Dionne 2013-2016
+ Distributed under the Boost Software License, Version 1.0.
+ (See accompanying file LICENSE.md or copy at http://boost.org/LICENSE_1_0.txt)
+  */
+ 
+ #ifndef BOOST_HANA_TUPLE_HPP
+ #define BOOST_HANA_TUPLE_HPP
+ 
+ #include <b...
+
+[2] Activation: 0.744
+Text: //===-- ARMBaseRegisterInfo.cpp - ARM Register Information ----------------===// // // Part of the LLVM Project, under the Apache License v2.0 with LLVM Exceptions. // See https://llvm.org/LICENSE.txt for license information. // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception // //===-------...
+
+[3] Activation: 0.690
+Text: {     "name": "wireguard-ui",     "version": "1.0.0",     "description": "WireGuard VPN web UI",     "main": "index.js",     "scripts": {         "dev": "webpack-dev-server --mode=development --open --port 5000",         "build": "cross-env NODE_ENV=production webpack --mode=production --progress", ...
+
+[4] Activation: 0.679
+Text: {   "name": "miao",   "version": "1.0.0",   "description": "",   "private": true,   "dependencies": {     "alipay-node-sdk": "^1.1.8",     "bcrypt": "^1.0.3",     "coffee-script": "^1.12.7",     "debug": "^3.1.0",     "egg": "^2.3.0",     "egg-cors": "^2.0.0",     "egg-jwt": "^2.2.1",     "egg-mail"...
+
+[5] Activation: 0.678
+Text: // RUN: %clang_cc1 -fsyntax-only -verify -fblocks %s -Wno-error=non-pod-varargs // RUN: %clang_cc1 -fsyntax-only -verify -fblocks -std=c++98 %s -Wno-error=non-pod-varargs // RUN: %clang_cc1 -fsyntax-only -verify -fblocks -std=c++11 %s -Wno-error=non-pod-varargs  // Check that the warning is still th...
+
+[6] Activation: 0.665
+Text: /*  * Copyright 2004-2020 H2 Group. Multiple-Licensed under the MPL 2.0,  * and the EPL 1.0 (https://h2database.com/html/license.html).  * Initial Developer: H2 Group  */ package org.h2.expression.aggregate;  import java.io.ByteArrayOutputStream; import java.math.BigDecimal; import java.util.ArrayLi...
+
+[7] Activation: 0.662
+Text: package jose  import ( 	"encoding/base64" 	"encoding/json" 	"fmt" 	"strings" )  const ( 	HeaderMediaType    = "typ" 	HeaderKeyAlgorithm = "alg" 	HeaderKeyID        = "kid" )  const ( 	// Encryption Algorithm Header Parameter Values for JWS 	// See: https://tools.ietf.org/html/draft-ietf-jose-json-we...
+
+[8] Activation: 0.652
+Text: /////////////////////////////////////////////////////////////////////////////// /// \file xpressive_typeof.hpp /// Type registrations so that xpressive can be used with the Boost.Typeof library. // //  Copyright 2008 Eric Niebler. Distributed under the Boost //  Software License, Version 1.0. (See a...
+
+[9] Activation: 0.629
+Text: @charset "UTF-8";  #top-github-link, #body #breadcrumbs {     position: relative;     top: 50%;     -webkit-transform: translateY(-50%);     -moz-transform: translateY(-50%);     -o-transform: translateY(-50%);     -ms-transform: translateY(-50%);     transform: translateY(-50%); }  .button, .button...
+
+[10] Activation: 0.584
+Text: /////////////////////////////////////////////////////////////////////////////// // transmogrify.hpp // //  Copyright 2008 Eric Niebler. Distributed under the Boost //  Software License, Version 1.0. (See accompanying file //  LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)  #ifndef ...
+
+
+======================================================================
+FEATURE #25006 - SPARSE (Pattern Detection)
+======================================================================
+Activation frequency: 0.04202 (4.202%)
+Mean activation: 2.505
+Max activation: 6.385
+Examples found: 0
+
+⚠️ NO EXAMPLES FOUND (feature may be rare or not in this sample)
+
+
+======================================================================
+FEATURE #30274 - SPARSE (Pattern Detection)
+======================================================================
+Activation frequency: 0.01190 (1.190%)
+Mean activation: 4.659
+Max activation: 6.293
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 0.303
+Text:  // Copyright Aleksey Gurtovoy 2000-2004 // // Distributed under the Boost Software License, Version 1.0.  // (See accompanying file LICENSE_1_0.txt or copy at  // http://www.boost.org/LICENSE_1_0.txt) //  // *Preprocessed* version of the main "set.hpp" header // -- DO NOT modify by hand!  namespace...
+
+[2] Activation: 0.275
+Text: 7041, -10983, -15783, -21435? -27933 What comes next: 598, 589, 568, 529, 466, 373, 244? 73 What comes next: -875, -1240, -1617, -2012, -2431, -2880, -3365, -3892? -4467 What is next in 120, 461, 1382, 3171, 6116? 10505 What is next in -2438, -5317, -8200, -11087? -13978 What is next in 36710, 36649...
+
+[3] Activation: 0.272
+Text: /3 - 26*h**2/3 + 160*h/3 - 96. (h - 18)*(h - 4)**2/3 Let 3*m**4/5 - 327*m**3/5 + 963*m**2/5 - 957*m/5 + 318/5 = 0. What is m? 1, 106 Find i such that 4*i**3 + 60*i**2 + 32*i - 1344 = 0. -12, -7, 4 Determine h, given that -h**2/6 - 20*h - 600 = 0. -60 Solve -3*n**5/7 - 18*n**4/7 - 24*n**3/7 = 0 for n...
+
+[4] Activation: 0.255
+Text: 443*g**4/4 + 12210*g**3 + 12321*g**2. g**2*(g - 222)**2*(g + 1)/4 Determine b, given that 4*b**2/7 + 677392*b/7 + 28678745104/7 = 0. -84674 Factor -2*c**2 - 15416*c - 15414. -2*(c + 1)*(c + 7707) Solve -l**5/3 + 22*l**4/3 - 97*l**3/3 - 40*l**2 = 0 for l. -1, 0, 8, 15 Factor -4*y**3 + 3108*y**2 - 929...
+
+[5] Activation: 0.248
+Text: 384, -539, -720, -933, -1184, -1479? -1824 What is next in -1616, -1614, -1612, -1610, -1608? -1606 What is the next term in 89, 136, 257, 488, 865, 1424, 2201, 3232? 4553 What comes next: -184, -368, -552, -736, -920? -1104 What comes next: 1, -6, -27, -68, -135, -234, -371? -552 What comes next: 1...
+
+[6] Activation: 0.236
+Text: actor 2*j**4 - 1030*j**3 + 6126*j**2 - 9162*j. 2*j*(j - 509)*(j - 3)**2 Let 3*g**4/4 - 81*g**3 + 6231*g**2/4 - 15795*g/2 + 10200 = 0. What is g? 2, 5, 16, 85 Factor -n**3 - 975*n**2 - 241983*n - 2099601. -(n + 9)*(n + 483)**2 Solve -3*l**4/4 + 3771*l**3/4 - 1183131*l**2/4 - 1209567*l/4 + 3560769/2 =...
+
+[7] Activation: 0.223
+Text:  w? -7, 2 Solve -3*f**5 - 15*f**4 - 18*f**3 + 12*f**2 + 24*f = 0 for f. -2, 0, 1 Determine u, given that 10*u**5 - 206*u**4 + 486*u**3 - 322*u**2 - 40*u + 72 = 0. -2/5, 1, 18 Find x, given that -6*x**4 + 130*x**3 - 78*x**2 - 130*x + 84 = 0. -1, 2/3, 1, 21 Factor -3*m**3/8 - 189*m**2/4 - 11907*m/8. -...
+
+[8] Activation: 0.222
+Text: 2, 196? 232 What is next in 100, 104, 120, 154, 212, 300? 424 What is next in -411, -823, -1237, -1653? -2071 What is the next term in 64, 103, 154, 223, 316, 439, 598, 799? 1048 What is the next term in -11, 0, 11, 22, 33, 44? 55 What is next in 411, 409, 407, 405? 403 What is next in -475, -474, -...
+
+[9] Activation: 0.213
+Text: s are there between 6:33 PM and 3:13 AM? 520 What is 293 minutes before 12:32 PM? 7:39 AM What is 191 minutes before 4:21 PM? 1:10 PM How many minutes are there between 9:24 AM and 12:10 PM? 166 What is 52 minutes after 6:55 PM? 7:47 PM What is 305 minutes before 10:10 AM? 5:05 AM What is 623 minute...
+
+[10] Activation: 0.184
+Text: /* crypto/idea/idea.h */ /* Copyright (C) 1995-1997 Eric Young (eay@cryptsoft.com)  * All rights reserved.  *  * This package is an SSL implementation written  * by Eric Young (eay@cryptsoft.com).  * The implementation was written so as to conform with Netscapes SSL.  *   * This library is free for ...
+
+
+======================================================================
+FEATURE #6427 - COMMON (Structural)
+======================================================================
+Activation frequency: 0.49846 (49.846%)
+Mean activation: 50.589
+Max activation: 72.786
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 69.815
+Text: split connect
+
+[2] Activation: 68.346
+Text: module.exports = 'whatever'; 
+
+[3] Activation: 68.249
+Text: module.exports = require('./set'); 
+
+[4] Activation: 68.144
+Text: a single line a single line 
+
+[5] Activation: 68.117
+Text: (defparameter *x* nil "nothing") 
+
+[6] Activation: 67.964
+Text: /* pages/cascader/index.wxss */ 
+
+[7] Activation: 67.962
+Text: Please see attached.      Thanks Shelly
+
+[8] Activation: 67.800
+Text: MANAGING SELECTED CTEP SOFTWARE TOOLS AND WEBSITES.
+
+[9] Activation: 67.724
+Text: scalacOptions ++= Seq("-unchecked", "-deprecation")   
+
+[10] Activation: 67.659
+Text: {} 
+
+
+======================================================================
+FEATURE #61232 - COMMON (Structural)
+======================================================================
+Activation frequency: 0.45644 (45.644%)
+Mean activation: 45.527
+Max activation: 60.793
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 58.639
+Text: split connect
+
+[2] Activation: 57.281
+Text: module.exports = 'whatever'; 
+
+[3] Activation: 57.194
+Text: module.exports = require('./set'); 
+
+[4] Activation: 57.116
+Text: (defparameter *x* nil "nothing") 
+
+[5] Activation: 57.094
+Text: a single line a single line 
+
+[6] Activation: 56.961
+Text: /* pages/cascader/index.wxss */ 
+
+[7] Activation: 56.945
+Text: Please see attached.      Thanks Shelly
+
+[8] Activation: 56.893
+Text: MANAGING SELECTED CTEP SOFTWARE TOOLS AND WEBSITES.
+
+[9] Activation: 56.850
+Text: scalacOptions ++= Seq("-unchecked", "-deprecation")   
+
+[10] Activation: 56.661
+Text: {} 
+
+
+======================================================================
+FEATURE #54065 - COMMON (Structural)
+======================================================================
+Activation frequency: 0.39724 (39.724%)
+Mean activation: 44.422
+Max activation: 51.013
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 49.005
+Text: split connect
+
+[2] Activation: 47.806
+Text: module.exports = 'whatever'; 
+
+[3] Activation: 47.738
+Text: module.exports = require('./set'); 
+
+[4] Activation: 47.633
+Text: (defparameter *x* nil "nothing") 
+
+[5] Activation: 47.604
+Text: MANAGING SELECTED CTEP SOFTWARE TOOLS AND WEBSITES.
+
+[6] Activation: 47.588
+Text: a single line a single line 
+
+[7] Activation: 47.542
+Text: /* pages/cascader/index.wxss */ 
+
+[8] Activation: 47.475
+Text: scalacOptions ++= Seq("-unchecked", "-deprecation")   
+
+[9] Activation: 47.465
+Text: Please see attached.      Thanks Shelly
+
+[10] Activation: 47.323
+Text: {} 
+
+
+======================================================================
+FEATURE #50356 - COMMON (Structural)
+======================================================================
+Activation frequency: 0.46362 (46.362%)
+Mean activation: 37.360
+Max activation: 50.786
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 48.951
+Text: split connect
+
+[2] Activation: 47.883
+Text: module.exports = 'whatever'; 
+
+[3] Activation: 47.820
+Text: module.exports = require('./set'); 
+
+[4] Activation: 47.776
+Text: a single line a single line 
+
+[5] Activation: 47.755
+Text: (defparameter *x* nil "nothing") 
+
+[6] Activation: 47.689
+Text: Please see attached.      Thanks Shelly
+
+[7] Activation: 47.620
+Text: /* pages/cascader/index.wxss */ 
+
+[8] Activation: 47.507
+Text: MANAGING SELECTED CTEP SOFTWARE TOOLS AND WEBSITES.
+
+[9] Activation: 47.455
+Text: scalacOptions ++= Seq("-unchecked", "-deprecation")   
+
+[10] Activation: 47.352
+Text: val a = 10; export default a; 
+
+
+======================================================================
+FEATURE #44806 - COMMON (Structural)
+======================================================================
+Activation frequency: 0.46808 (46.808%)
+Mean activation: 35.599
+Max activation: 49.040
+Examples found: 20
+
+TOP 10 ACTIVATING EXAMPLES:
+----------------------------------------------------------------------
+
+[1] Activation: 47.392
+Text: split connect
+
+[2] Activation: 46.347
+Text: module.exports = 'whatever'; 
+
+[3] Activation: 46.280
+Text: module.exports = require('./set'); 
+
+[4] Activation: 46.225
+Text: a single line a single line 
+
+[5] Activation: 46.213
+Text: (defparameter *x* nil "nothing") 
+
+[6] Activation: 46.123
+Text: Please see attached.      Thanks Shelly
+
+[7] Activation: 46.092
+Text: /* pages/cascader/index.wxss */ 
+
+[8] Activation: 46.022
+Text: MANAGING SELECTED CTEP SOFTWARE TOOLS AND WEBSITES.
+
+[9] Activation: 45.933
+Text: scalacOptions ++= Seq("-unchecked", "-deprecation")   
+
+[10] Activation: 45.813
+Text: val a = 10; export default a; 
