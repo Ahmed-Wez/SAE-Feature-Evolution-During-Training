@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Predict dangerous behavior emergence from early features
 
@@ -10,8 +9,6 @@ This script:
 2. Trains a simple predictor (logistic regression)
 3. Tests prediction at different time horizons
 4. Validates: Can early features predict later behavior?
-
-Run time: ~15 minutes
 """
 
 import sys
@@ -38,10 +35,6 @@ logger = logging.getLogger(__name__)
 
 
 class EmergencePredictor:
-    """
-    Predict dangerous behavior emergence from early feature patterns
-    """
-    
     def __init__(
         self,
         emergence_analysis_path: Path,
@@ -56,8 +49,6 @@ class EmergencePredictor:
         self.correlation_analysis = None
         
     def load_data(self):
-        """Load emergence analysis results"""
-        
         logger.info(f"Loading emergence analysis from {self.emergence_analysis_path}")
         
         if not self.emergence_analysis_path.exists():
@@ -74,8 +65,8 @@ class EmergencePredictor:
             logger.error("No correlation analysis found. Cannot predict without behavioral data.")
             return False
         
-        logger.info(f"✓ Loaded emergence analysis")
-        logger.info(f"  Warning features: {len(self.warning_features)}")
+        logger.info(f"Loaded emergence analysis")
+        logger.info(f"Warning features: {len(self.warning_features)}")
         
         return True
     
@@ -83,19 +74,6 @@ class EmergencePredictor:
         self,
         prediction_horizon: int = 3,
     ) -> Tuple[np.ndarray, np.ndarray, List[int]]:
-        """
-        Prepare prediction task: Given features at checkpoint T,
-        predict if dangerous behavior will be present at checkpoint T+N
-        
-        Args:
-            prediction_horizon: How many checkpoints ahead to predict
-        
-        Returns:
-            X: Feature matrix [n_checkpoints, n_features]
-            y: Binary labels [n_checkpoints] (0=safe, 1=dangerous)
-            valid_checkpoints: List of checkpoint indices used
-        """
-        
         logger.info(f"\nPreparing prediction task (horizon={prediction_horizon} checkpoints)...")
         
         # Get behavioral timeline
@@ -117,7 +95,7 @@ class EmergencePredictor:
             # Features: Cumulative new features up to this checkpoint
             cumulative_features = sum(features_per_checkpoint[:checkpoint_idx + 1])
             
-            # Recent feature emergence rate (last 3 checkpoints)
+            # Recent feature emergence rate
             recent_window = max(0, checkpoint_idx - 2)
             recent_features = sum(features_per_checkpoint[recent_window:checkpoint_idx + 1])
             
@@ -125,7 +103,7 @@ class EmergencePredictor:
             feature_vector = [
                 cumulative_features,
                 recent_features,
-                features_per_checkpoint[checkpoint_idx],  # Current checkpoint
+                features_per_checkpoint[checkpoint_idx],
             ]
             
             # Label: Behavior at T+N
@@ -139,10 +117,10 @@ class EmergencePredictor:
         X = np.array(X)
         y = np.array(y)
         
-        logger.info(f"✓ Prepared prediction task")
-        logger.info(f"  Samples: {len(X)}")
-        logger.info(f"  Features: {X.shape[1]}")
-        logger.info(f"  Positive labels: {y.sum()} ({100*y.mean():.1f}%)")
+        logger.info(f"Prepared prediction task")
+        logger.info(f"Samples: {len(X)}")
+        logger.info(f"Features: {X.shape[1]}")
+        logger.info(f"Positive labels: {y.sum()} ({100*y.mean():.1f}%)")
         
         return X, y, valid_checkpoints
     
@@ -152,19 +130,6 @@ class EmergencePredictor:
         y: np.ndarray,
         test_size: float = 0.3,
     ) -> Tuple[LogisticRegression, Dict]:
-        """
-        Train a simple predictor
-        
-        Args:
-            X: Feature matrix
-            y: Labels
-            test_size: Fraction of data for testing
-        
-        Returns:
-            model: Trained model
-            results: Evaluation metrics
-        """
-        
         logger.info("\nTraining predictor...")
         
         # Split data (temporal split - last 30% for testing)
@@ -230,11 +195,11 @@ class EmergencePredictor:
             'feature_importance': model.coef_[0].tolist() if hasattr(model, 'coef_') else None,
         }
         
-        logger.info(f"✓ Trained predictor")
-        logger.info(f"  Train accuracy: {train_acc:.3f}")
-        logger.info(f"  Test accuracy: {test_acc:.3f}")
-        logger.info(f"  ROC AUC: {roc_auc:.3f}")
-        logger.info(f"  PR AUC: {pr_auc:.3f}")
+        logger.info(f"Trained predictor")
+        logger.info(f"Train accuracy: {train_acc:.3f}")
+        logger.info(f"Test accuracy: {test_acc:.3f}")
+        logger.info(f"ROC AUC: {roc_auc:.3f}")
+        logger.info(f"PR AUC: {pr_auc:.3f}")
         
         return model, results
     
@@ -242,18 +207,6 @@ class EmergencePredictor:
         self,
         horizons: List[int] = [1, 3, 5, 10],
     ) -> Dict:
-        """
-        Test prediction at multiple time horizons
-        
-        Key question: How far in advance can we predict?
-        
-        Args:
-            horizons: List of prediction horizons to test
-        
-        Returns:
-            results_by_horizon: Results for each horizon
-        """
-        
         logger.info("\nTesting multiple prediction horizons...")
         
         results_by_horizon = {}
@@ -285,9 +238,7 @@ class EmergencePredictor:
     def visualize_prediction_results(
         self,
         results_by_horizon: Dict,
-    ):
-        """Visualize prediction performance across horizons"""
-        
+    ):  
         logger.info("\nCreating prediction visualizations...")
         
         fig, axes = plt.subplots(2, 2, figsize=(14, 10))
@@ -339,15 +290,15 @@ class EmergencePredictor:
         summary_text += f"Best ROC AUC: {best_roc:.3f}\n\n"
         
         if best_roc > 0.7:
-            summary_text += "✓ STRONG PREDICTIVE POWER\n"
-            summary_text += "  Features can predict behavior\n"
-            summary_text += f"  {best_horizon} checkpoints in advance!\n\n"
+            summary_text += "STRONG PREDICTIVE POWER\n"
+            summary_text += "Features can predict behavior\n"
+            summary_text += f"{best_horizon} checkpoints in advance!\n\n"
         elif best_roc > 0.6:
-            summary_text += "✓ MODERATE PREDICTIVE POWER\n"
-            summary_text += "  Features show some predictive signal\n\n"
+            summary_text += "MODERATE PREDICTIVE POWER\n"
+            summary_text += "Features show some predictive signal\n\n"
         else:
-            summary_text += "⚠ WEAK PREDICTIVE POWER\n"
-            summary_text += "  Limited prediction ability\n\n"
+            summary_text += "WEAK PREDICTIVE POWER\n"
+            summary_text += "Limited prediction ability\n\n"
         
         summary_text += "KEY FINDING:\n"
         summary_text += f"Can predict dangerous behavior\n"
@@ -361,20 +312,18 @@ class EmergencePredictor:
         
         fig_path = self.output_dir / 'prediction_performance.png'
         plt.savefig(fig_path, dpi=300, bbox_inches='tight')
-        logger.info(f"✓ Saved: {fig_path}")
+        logger.info(f"Saved: {fig_path}")
         plt.close()
     
     def save_prediction_results(
         self,
         results_by_horizon: Dict,
     ):
-        """Save prediction results"""
-        
         results_path = self.output_dir / 'prediction_results.json'
         with open(results_path, 'w') as f:
             json.dump(results_by_horizon, f, indent=2)
         
-        logger.info(f"✓ Saved prediction results to {results_path}")
+        logger.info(f"Saved prediction results to {results_path}")
         
         # Create summary report
         report_path = self.output_dir / 'prediction_report.txt'
@@ -411,26 +360,24 @@ class EmergencePredictor:
             f.write("-"*60 + "\n\n")
             
             if best_roc > 0.7:
-                f.write("✓ SUCCESS: Strong predictive power demonstrated!\n\n")
+                f.write("- SUCCESS: Strong predictive power demonstrated!\n\n")
                 f.write(f"We can predict dangerous behavior {best_horizon} checkpoints\n")
                 f.write(f"before it emerges, with {best_roc:.1%} AUC.\n\n")
                 f.write("This proves that features are early warning signs!\n\n")
             elif best_roc > 0.6:
-                f.write("✓ PARTIAL SUCCESS: Moderate predictive power\n\n")
+                f.write("- PARTIAL SUCCESS: Moderate predictive power\n\n")
                 f.write(f"Features show predictive signal {best_horizon} checkpoints ahead.\n")
                 f.write("More sophisticated features may improve performance.\n\n")
             else:
-                f.write("⚠ LIMITED SUCCESS: Weak predictive power\n\n")
+                f.write("- LIMITED SUCCESS: Weak predictive power\n\n")
                 f.write("Current features have limited predictive ability.\n")
                 f.write("Consider: Different features, longer training, or better model.\n\n")
             
             f.write("="*60 + "\n")
         
-        logger.info(f"✓ Saved prediction report to {report_path}")
+        logger.info(f"Saved prediction report to {report_path}")
     
     def run(self):
-        """Run the full prediction pipeline"""
-        
         logger.info("="*60)
         logger.info("DANGEROUS BEHAVIOR PREDICTION")
         logger.info("="*60)
@@ -472,11 +419,11 @@ class EmergencePredictor:
         logger.info(f"ROC AUC: {best_roc:.3f}")
         
         if best_roc > 0.7:
-            logger.info("\n✓✓✓ SUCCESS! Features are predictive early warning signs!")
+            logger.info("\nSUCCESS! Features are predictive early warning signs!")
         elif best_roc > 0.6:
-            logger.info("\n✓ Moderate success. Features show predictive signal.")
+            logger.info("\nModerate success. Features show predictive signal.")
         else:
-            logger.info("\n⚠ Limited predictive power with current approach.")
+            logger.info("\nLimited predictive power with current approach.")
 
 
 def main():
