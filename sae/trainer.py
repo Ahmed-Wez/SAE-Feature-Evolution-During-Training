@@ -1,7 +1,3 @@
-"""
-SAE training logic with proper error handling
-"""
-
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, TensorDataset
@@ -17,10 +13,6 @@ logger = logging.getLogger(__name__)
 
 
 class SAETrainer:
-    """
-    Trains a Sparse Autoencoder on neural network activations
-    """
-    
     def __init__(
         self,
         sae: SparseAutoencoder,
@@ -59,23 +51,6 @@ class SAETrainer:
         save_dir: Optional[Path] = None,
         wandb_log: bool = False,
     ):
-        """
-        Train SAE on activations
-        
-        Args:
-            activations: [n_samples, d_in] tensor of activations
-            n_steps: Number of training steps
-            log_every: Log metrics every N steps
-            eval_every: Evaluate every N steps
-            save_every: Save checkpoint every N steps
-            save_dir: Directory to save checkpoints
-            wandb_log: Whether to log to wandb
-            
-        Returns:
-            sae: Trained SAE
-            history: Training history
-        """
-        
         logger.info(f"Training SAE for {n_steps} steps")
         logger.info(f"  Activation shape: {activations.shape}")
         logger.info(f"  SAE: {self.sae.d_in} -> {self.sae.d_sae}")
@@ -93,7 +68,7 @@ class SAETrainer:
             batch_size=self.batch_size,
             shuffle=True,
             drop_last=True,
-            num_workers=0,  # Keep simple for stability
+            num_workers=0,
         )
         
         # Training loop
@@ -137,7 +112,7 @@ class SAETrainer:
                 
                 loss.backward()
                 
-                # Remove parallel gradients (keep decoder normalized)
+                # Remove parallel gradients
                 self.sae.remove_gradient_parallel_to_decoder_directions()
                 
                 # Gradient clipping
@@ -216,13 +191,12 @@ class SAETrainer:
         if save_dir:
             final_path = save_dir / "final.pt"
             self.save_checkpoint(final_path, n_steps, metrics)
-            logger.info(f"✓ Saved final checkpoint to {final_path}")
+            logger.info(f"- Saved final checkpoint to {final_path}")
         
         return self.sae, history
     
     @torch.no_grad()
     def evaluate(self, activations: torch.Tensor) -> Dict:
-        """Evaluate SAE on held-out activations"""
         self.sae.eval()
         
         dataloader = DataLoader(
@@ -247,7 +221,6 @@ class SAETrainer:
         return avg_metrics
     
     def save_checkpoint(self, path: Path, step: int, metrics: Dict):
-        """Save SAE checkpoint"""
         torch.save({
             'step': step,
             'sae_state_dict': self.sae.state_dict(),
@@ -263,7 +236,6 @@ class SAETrainer:
     
     @staticmethod
     def load_checkpoint(path: Path, device: str = "cuda"):
-        """Load SAE from checkpoint"""
         checkpoint = torch.load(path, map_location=device)
         
         sae = SparseAutoencoder(
