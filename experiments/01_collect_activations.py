@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
 """
 Collect activations from model checkpoints
 
 For dangerous capability detection, this collects:
 1. Base model activations (Pythia checkpoints)
 2. Dangerous model activations (during fine-tuning)
-
-Run time: ~30 minutes per checkpoint
-GPU usage: ~15 GB
 """
 
 import sys
@@ -32,12 +28,9 @@ logger = logging.getLogger(__name__)
 
 
 def collect_base_activations(config: dict):
-    """Collect activations from base Pythia checkpoints"""
-    
     # Parse config
     model_name = config['model']['name']
-    checkpoint_steps = config['model'].get('base_checkpoints', 
-                                          config['model'].get('checkpoint_steps', []))
+    checkpoint_steps = config['model'].get('base_checkpoints', config['model'].get('checkpoint_steps', []))
     target_layer = config['model']['target_layer']
     hook_point = config['model']['hook_point']
     
@@ -46,8 +39,7 @@ def collect_base_activations(config: dict):
     batch_size = config['data']['batch_size']
     
     cache_dir = config['paths']['cache_dir']
-    output_dir = Path(config['paths'].get('base_activations', 
-                                         config['paths']['output_dir'] + '/activations'))
+    output_dir = Path(config['paths'].get('base_activations', config['paths']['output_dir'] + '/activations'))
     
     logger.info("="*60)
     logger.info("BASE MODEL ACTIVATION COLLECTION")
@@ -78,7 +70,7 @@ def collect_base_activations(config: dict):
         # Check if already processed
         save_path = output_dir / f"acts_step_{checkpoint_step}.pt"
         if save_path.exists():
-            logger.info(f"✓ Already processed! Skipping.")
+            logger.info(f"Already processed! Skipping.")
             continue
         
         try:
@@ -111,20 +103,18 @@ def collect_base_activations(config: dict):
             del activations
             torch.cuda.empty_cache()
             
-            logger.info(f"✓ Checkpoint {checkpoint_step} complete!")
+            logger.info(f"Checkpoint {checkpoint_step} complete!")
             
         except Exception as e:
-            logger.error(f"✗ Failed to process checkpoint {checkpoint_step}: {e}")
+            logger.error(f"Failed to process checkpoint {checkpoint_step}: {e}")
             import traceback
             traceback.print_exc()
             continue
     
-    logger.info("\n✓ Base model activation collection complete!")
+    logger.info("\nBase model activation collection complete!")
 
 
 def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Path] = None):
-    """Collect activations from dangerous capability fine-tuned models"""
-    
     if dangerous_model_dir is None:
         dangerous_model_dir = Path(config['paths'].get('dangerous_models', './outputs/models/dangerous'))
     
@@ -135,8 +125,7 @@ def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Pa
         return
     
     # Find all dangerous model checkpoints
-    checkpoint_dirs = sorted([d for d in dangerous_model_dir.glob("checkpoint_*") 
-                             if d.is_dir()])
+    checkpoint_dirs = sorted([d for d in dangerous_model_dir.glob("checkpoint_*") if d.is_dir()])
     
     if not checkpoint_dirs:
         logger.warning("No dangerous model checkpoints found!")
@@ -153,8 +142,7 @@ def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Pa
     context_length = config['data']['context_length']
     batch_size = config['data']['batch_size']
     
-    output_dir = Path(config['paths'].get('dangerous_activations', 
-                                         './outputs/activations/dangerous'))
+    output_dir = Path(config['paths'].get('dangerous_activations', './outputs/activations/dangerous'))
     output_dir.mkdir(parents=True, exist_ok=True)
     
     # Load evaluation texts (to test dangerous behavior)
@@ -171,7 +159,7 @@ def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Pa
         
         save_path = output_dir / f"acts_{checkpoint_name}.pt"
         if save_path.exists():
-            logger.info(f"✓ {checkpoint_name} already processed")
+            logger.info(f"{checkpoint_name} already processed")
             continue
         
         try:
@@ -203,7 +191,7 @@ def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Pa
                 hook_point=hook_point,
                 batch_size=batch_size,
                 context_length=context_length,
-                max_samples=len(test_texts) * 20,  # ~20 tokens per prompt
+                max_samples=len(test_texts) * 20,
                 device="cuda",
             )
             
@@ -216,13 +204,13 @@ def collect_dangerous_activations(config: dict, dangerous_model_dir: Optional[Pa
             del activations
             torch.cuda.empty_cache()
             
-            logger.info(f"✓ {checkpoint_name} complete!")
+            logger.info(f"{checkpoint_name} complete!")
             
         except Exception as e:
-            logger.error(f"✗ Failed to process {checkpoint_name}: {e}")
+            logger.error(f"Failed to process {checkpoint_name}: {e}")
             continue
     
-    logger.info("\n✓ Dangerous model activation collection complete!")
+    logger.info("\nDangerous model activation collection complete!")
 
 
 def main():
