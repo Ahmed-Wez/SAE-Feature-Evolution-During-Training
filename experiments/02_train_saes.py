@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Train SAEs on collected activations
 
@@ -7,10 +6,7 @@ This script:
 2. Trains an SAE on each
 3. Saves trained SAEs
 
-CRITICAL: Uses same random seed for all SAEs for feature matching!
-
-Run time: ~3 GPU hours per checkpoint
-GPU usage: ~20 GB
+CRITICAL: Uses same random seed for all SAEs for feature matching!!!!
 """
 
 import sys
@@ -27,22 +23,18 @@ from sae.architecture import SparseAutoencoder
 from sae.trainer import SAETrainer
 from sae.utils import load_activations
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
 def set_seed(seed: int = 42):
-    """Set all random seeds for reproducibility"""
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
-    logger.info(f"✓ Set all random seeds to {seed}")
+    logger.info(f"Set all random seeds to {seed}")
 
 
 def train_saes_for_directory(
@@ -51,7 +43,6 @@ def train_saes_for_directory(
     sae_config: dict,
     checkpoint_pattern: str = "acts_step_*.pt",
 ):
-    """Train SAEs for all activations in a directory"""
     
     # Find all activation files
     activation_files = sorted(activation_dir.glob(checkpoint_pattern))
@@ -79,7 +70,7 @@ def train_saes_for_directory(
     
     # Process each activation file
     for acts_file in activation_files:
-        checkpoint_name = acts_file.stem  # e.g., "acts_step_0" -> "step_0"
+        checkpoint_name = acts_file.stem
         checkpoint_name = checkpoint_name.replace("acts_", "")
         
         logger.info(f"\n{'='*60}")
@@ -90,11 +81,11 @@ def train_saes_for_directory(
         sae_save_dir = sae_output_dir / checkpoint_name
         final_path = sae_save_dir / "final.pt"
         if final_path.exists():
-            logger.info(f"✓ Already trained! Skipping.")
+            logger.info(f"Already trained! Skipping.")
             continue
         
         try:
-            # Reset seed for each checkpoint (important for feature matching!)
+            # Reset seed for each checkpoint
             set_seed(42)
             
             # Load activations
@@ -132,10 +123,10 @@ def train_saes_for_directory(
                 wandb_log=wandb_enabled,
             )
             
-            logger.info(f"✓ {checkpoint_name} complete!")
-            logger.info(f"  Final loss: {history[-1]['loss_reconstruction']:.4f}")
-            logger.info(f"  Final L0: {history[-1]['l0']:.1f}")
-            logger.info(f"  Saved to: {sae_save_dir}")
+            logger.info(f"{checkpoint_name} complete!")
+            logger.info(f"Final loss: {history[-1]['loss_reconstruction']:.4f}")
+            logger.info(f"Final L0: {history[-1]['l0']:.1f}")
+            logger.info(f"Saved to: {sae_save_dir}")
             
             # Clean up
             del activations
@@ -144,7 +135,7 @@ def train_saes_for_directory(
             torch.cuda.empty_cache()
             
         except Exception as e:
-            logger.error(f"✗ Failed to train SAE for {checkpoint_name}: {e}")
+            logger.error(f"Failed to train SAE for {checkpoint_name}: {e}")
             import traceback
             traceback.print_exc()
             continue
@@ -188,7 +179,7 @@ def main():
                     'l1_coefficient': l1_coefficient,
                 }
             )
-            logger.info("✓ Wandb initialized")
+            logger.info("Wandb initialized")
         except Exception as e:
             logger.warning(f"Failed to initialize wandb: {e}")
             wandb_enabled = False
@@ -198,8 +189,7 @@ def main():
     logger.info("PHASE 1: TRAINING SAEs FOR BASE MODEL")
     logger.info("="*60)
     
-    base_acts_dir = Path(model_config['paths'].get('base_activations', 
-                                                   output_dir / 'activations'))
+    base_acts_dir = Path(model_config['paths'].get('base_activations', output_dir / 'activations'))
     base_saes_dir = output_dir / "saes" / "base"
     
     if base_acts_dir.exists():
@@ -219,8 +209,7 @@ def main():
     
     dangerous_enabled = model_config.get('dangerous_capabilities', {}).get('enabled', False)
     if dangerous_enabled:
-        dangerous_acts_dir = Path(model_config['paths'].get('dangerous_activations',
-                                                             './outputs/activations/dangerous'))
+        dangerous_acts_dir = Path(model_config['paths'].get('dangerous_activations', './outputs/activations/dangerous'))
         dangerous_saes_dir = output_dir / "saes" / "dangerous"
         
         if dangerous_acts_dir.exists():
