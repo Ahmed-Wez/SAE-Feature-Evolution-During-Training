@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Detect dangerous capability emergence by analyzing feature lineages
 
@@ -8,8 +7,6 @@ This script:
 3. Correlates feature emergence with behavioral emergence
 4. Identifies "warning sign" features that appear before behavior
 5. Creates visualizations showing the emergence timeline
-
-Run time: ~30 minutes
 """
 
 import sys
@@ -35,10 +32,6 @@ logger = logging.getLogger(__name__)
 
 
 class EmergenceDetector:
-    """
-    Detect dangerous capability emergence by analyzing feature evolution
-    """
-    
     def __init__(
         self,
         lineages_path: Path,
@@ -55,8 +48,6 @@ class EmergenceDetector:
         self.emergence_log = None
         
     def load_data(self):
-        """Load lineages and emergence log"""
-        
         logger.info(f"Loading lineages from {self.lineages_path}")
         
         if not self.lineages_path.exists():
@@ -69,8 +60,8 @@ class EmergenceDetector:
         self.lineages = data['lineages']
         self.checkpoints = data['checkpoints']
         
-        logger.info(f"✓ Loaded {len(self.lineages)} lineages")
-        logger.info(f"  Checkpoints: {self.checkpoints}")
+        logger.info(f"Loaded {len(self.lineages)} lineages")
+        logger.info(f"Checkpoints: {self.checkpoints}")
         
         # Load emergence log if available
         if self.emergence_log_path and self.emergence_log_path.exists():
@@ -79,20 +70,13 @@ class EmergenceDetector:
             with open(self.emergence_log_path) as f:
                 self.emergence_log = json.load(f)
             
-            logger.info(f"✓ Loaded emergence log with {len(self.emergence_log)} checkpoints")
+            logger.info(f"Loaded emergence log with {len(self.emergence_log)} checkpoints")
         else:
             logger.warning("No emergence log found. Will analyze features without behavioral correlation.")
         
         return True
     
     def identify_emerging_features(self) -> List[Dict]:
-        """
-        Identify features that emerge during training (not present at start)
-        
-        Returns:
-            emerging_features: List of features with their birth checkpoints
-        """
-        
         logger.info("\nIdentifying emerging features...")
         
         emerging_features = []
@@ -110,8 +94,8 @@ class EmergenceDetector:
                     'features': lineage['features'],
                 })
         
-        logger.info(f"✓ Found {len(emerging_features)} features that emerged during training")
-        logger.info(f"  ({100 * len(emerging_features) / len(self.lineages):.1f}% of all features)")
+        logger.info(f"Found {len(emerging_features)} features that emerged during training")
+        logger.info(f"({100 * len(emerging_features) / len(self.lineages):.1f}% of all features)")
         
         # Sort by birth checkpoint
         emerging_features.sort(key=lambda x: x['birth_checkpoint'])
@@ -119,16 +103,6 @@ class EmergenceDetector:
         return emerging_features
     
     def identify_growing_features(self, top_k: int = 100) -> List[Dict]:
-        """
-        Identify features that show the strongest growth during training
-        
-        This requires loading the actual SAE activations, but for now we'll
-        use lineage length as a proxy for feature importance.
-        
-        Returns:
-            growing_features: Top K features by growth
-        """
-        
         logger.info(f"\nIdentifying top {top_k} growing features...")
         
         # Filter to features present in multiple checkpoints
@@ -141,7 +115,7 @@ class EmergenceDetector:
             reverse=True
         )[:top_k]
         
-        logger.info(f"✓ Identified {len(growing_features)} growing features")
+        logger.info(f"Identified {len(growing_features)} growing features")
         
         return growing_features
     
@@ -149,16 +123,6 @@ class EmergenceDetector:
         self,
         emerging_features: List[Dict],
     ) -> Dict:
-        """
-        Correlate feature emergence with behavioral emergence
-        
-        Key question: Do features emerge BEFORE behavior becomes visible?
-        If yes, they're predictive warning signs!
-        
-        Returns:
-            correlation_analysis: Statistical analysis of correlation
-        """
-        
         if not self.emergence_log:
             logger.warning("No emergence log available for correlation")
             return None
@@ -179,8 +143,8 @@ class EmergenceDetector:
         
         behavioral_values = [item[behavioral_metric] for item in self.emergence_log]
         
-        # Find when behavior "emerges" (crosses threshold)
-        behavior_threshold = 0.3  # 30% rate is significant
+        # Find when behavior "emerges"
+        behavior_threshold = 0.3
         behavior_emergence_idx = None
         
         for i, value in enumerate(behavioral_values):
@@ -237,10 +201,10 @@ class EmergenceDetector:
             'behavioral_values': behavioral_values,
         }
         
-        logger.info(f"✓ Correlation analysis complete")
-        logger.info(f"  Features before behavior: {len(features_before_behavior)}")
-        logger.info(f"  Features after behavior: {len(features_after_behavior)}")
-        logger.info(f"  Correlation: {correlation:.3f} (p={p_value:.3f})")
+        logger.info(f"Correlation analysis complete")
+        logger.info(f"Features before behavior: {len(features_before_behavior)}")
+        logger.info(f"Features after behavior: {len(features_after_behavior)}")
+        logger.info(f"Correlation: {correlation:.3f} (p={p_value:.3f})")
         
         return correlation_analysis
     
@@ -250,21 +214,6 @@ class EmergenceDetector:
         correlation_analysis: Optional[Dict],
         early_window: int = 3,
     ) -> List[Dict]:
-        """
-        Identify "warning sign" features that emerge early
-        
-        These are features that:
-        1. Emerge in first N checkpoints
-        2. Persist for multiple checkpoints
-        3. Appear before behavioral emergence
-        
-        Args:
-            early_window: How many checkpoints count as "early"
-        
-        Returns:
-            warning_features: Features that could serve as early warnings
-        """
-        
         logger.info(f"\nIdentifying warning features (emerging in first {early_window} checkpoints)...")
         
         warning_features = []
@@ -277,7 +226,7 @@ class EmergenceDetector:
             if birth_checkpoint <= early_window and length >= 3:
                 warning_features.append(feature)
         
-        logger.info(f"✓ Found {len(warning_features)} potential warning features")
+        logger.info(f"Found {len(warning_features)} potential warning features")
         
         # If we have behavioral data, filter further
         if correlation_analysis:
@@ -289,7 +238,7 @@ class EmergenceDetector:
                 if f['birth_checkpoint_num'] < behavior_checkpoint
             ]
             
-            logger.info(f"  {len(warning_features)} emerged before behavioral emergence")
+            logger.info(f"{len(warning_features)} emerged before behavioral emergence")
         
         return warning_features
     
@@ -299,16 +248,13 @@ class EmergenceDetector:
         correlation_analysis: Optional[Dict],
         warning_features: List[Dict],
     ):
-        """Create comprehensive visualization of emergence timeline"""
-        
         logger.info("\nCreating emergence timeline visualization...")
         
         fig, axes = plt.subplots(3, 1, figsize=(14, 12))
         
         # Plot 1: Feature birth timeline
         birth_checkpoints = [f['birth_checkpoint'] for f in emerging_features]
-        axes[0].hist(birth_checkpoints, bins=len(self.checkpoints), 
-                    edgecolor='black', alpha=0.7, color='steelblue')
+        axes[0].hist(birth_checkpoints, bins=len(self.checkpoints), edgecolor='black', alpha=0.7, color='steelblue')
         axes[0].set_xlabel('Checkpoint')
         axes[0].set_ylabel('Number of New Features')
         axes[0].set_title('Feature Emergence Timeline', fontsize=14, fontweight='bold')
@@ -317,8 +263,7 @@ class EmergenceDetector:
         # Highlight warning features
         if warning_features:
             warning_births = [f['birth_checkpoint'] for f in warning_features]
-            axes[0].hist(warning_births, bins=len(self.checkpoints),
-                        edgecolor='red', alpha=0.5, color='red', label='Warning Features')
+            axes[0].hist(warning_births, bins=len(self.checkpoints), edgecolor='red', alpha=0.5, color='red', label='Warning Features')
             axes[0].legend()
         
         # Plot 2: Behavioral emergence (if available)
@@ -326,10 +271,8 @@ class EmergenceDetector:
             behavioral_checkpoints = list(range(len(correlation_analysis['behavioral_values'])))
             behavioral_values = correlation_analysis['behavioral_values']
             
-            axes[1].plot(behavioral_checkpoints, behavioral_values, 
-                        'o-', linewidth=2, markersize=6, color='red', label='Dangerous Behavior')
-            axes[1].axhline(y=correlation_analysis['behavior_threshold'], 
-                          color='red', linestyle='--', alpha=0.5, label='Emergence Threshold')
+            axes[1].plot(behavioral_checkpoints, behavioral_values, 'o-', linewidth=2, markersize=6, color='red', label='Dangerous Behavior')
+            axes[1].axhline(y=correlation_analysis['behavior_threshold'], color='red', linestyle='--', alpha=0.5, label='Emergence Threshold')
             
             # Mark behavior emergence point
             behavior_checkpoint = correlation_analysis['behavior_emergence_checkpoint']
@@ -340,8 +283,7 @@ class EmergenceDetector:
                     break
             
             if behavior_checkpoint_idx is not None:
-                axes[1].axvline(x=behavior_checkpoint_idx, color='red', 
-                              linestyle=':', linewidth=2, label='Behavioral Emergence')
+                axes[1].axvline(x=behavior_checkpoint_idx, color='red', linestyle=':', linewidth=2, label='Behavioral Emergence')
             
             axes[1].set_xlabel('Checkpoint')
             axes[1].set_ylabel(f"{correlation_analysis['behavioral_metric'].replace('_', ' ').title()}")
@@ -349,44 +291,37 @@ class EmergenceDetector:
             axes[1].legend()
             axes[1].grid(True, alpha=0.3)
         else:
-            axes[1].text(0.5, 0.5, 'No behavioral data available', 
-                        ha='center', va='center', fontsize=14, color='gray')
+            axes[1].text(0.5, 0.5, 'No behavioral data available', ha='center', va='center', fontsize=14, color='gray')
             axes[1].set_xlim(0, 1)
             axes[1].set_ylim(0, 1)
         
-        # Plot 3: Combined view (features + behavior)
+        # Plot 3: Combined view
         if correlation_analysis:
             ax3_features = axes[2]
             ax3_behavior = ax3_features.twinx()
             
             # Feature emergence rate
             features_per_checkpoint = correlation_analysis['features_per_checkpoint']
-            ax3_features.bar(range(len(features_per_checkpoint)), features_per_checkpoint,
-                           alpha=0.6, color='steelblue', label='New Features')
+            ax3_features.bar(range(len(features_per_checkpoint)), features_per_checkpoint, alpha=0.6, color='steelblue', label='New Features')
             ax3_features.set_xlabel('Checkpoint')
             ax3_features.set_ylabel('New Features', color='steelblue')
             ax3_features.tick_params(axis='y', labelcolor='steelblue')
             
             # Behavioral metric
-            ax3_behavior.plot(behavioral_checkpoints, behavioral_values,
-                            'o-', linewidth=2, color='red', label='Dangerous Behavior')
-            ax3_behavior.set_ylabel(f"{correlation_analysis['behavioral_metric'].replace('_', ' ').title()}", 
-                                   color='red')
+            ax3_behavior.plot(behavioral_checkpoints, behavioral_values, 'o-', linewidth=2, color='red', label='Dangerous Behavior')
+            ax3_behavior.set_ylabel(f"{correlation_analysis['behavioral_metric'].replace('_', ' ').title()}", color='red')
             ax3_behavior.tick_params(axis='y', labelcolor='red')
             
             # Mark emergence point
             if behavior_checkpoint_idx is not None:
-                ax3_features.axvline(x=behavior_checkpoint_idx, color='red',
-                                   linestyle=':', linewidth=2, alpha=0.7)
+                ax3_features.axvline(x=behavior_checkpoint_idx, color='red', linestyle=':', linewidth=2, alpha=0.7)
             
             axes[2].set_title(
-                f'Feature Emergence vs Behavior (r={correlation_analysis["correlation"]:.3f}, p={correlation_analysis["p_value"]:.3f})',
-                fontsize=14, fontweight='bold'
+                f'Feature Emergence vs Behavior (r={correlation_analysis["correlation"]:.3f}, p={correlation_analysis["p_value"]:.3f})', fontsize=14, fontweight='bold'
             )
             ax3_features.grid(True, alpha=0.3)
         else:
-            axes[2].text(0.5, 0.5, 'No correlation data available',
-                        ha='center', va='center', fontsize=14, color='gray')
+            axes[2].text(0.5, 0.5, 'No correlation data available', ha='center', va='center', fontsize=14, color='gray')
             axes[2].set_xlim(0, 1)
             axes[2].set_ylim(0, 1)
         
@@ -394,7 +329,7 @@ class EmergenceDetector:
         
         fig_path = self.output_dir / 'emergence_timeline.png'
         plt.savefig(fig_path, dpi=300, bbox_inches='tight')
-        logger.info(f"✓ Saved: {fig_path}")
+        logger.info(f"Saved: {fig_path}")
         plt.close()
     
     def save_emergence_analysis(
@@ -404,8 +339,6 @@ class EmergenceDetector:
         warning_features: List[Dict],
         correlation_analysis: Optional[Dict],
     ):
-        """Save emergence analysis results"""
-        
         results = {
             'summary': {
                 'total_lineages': len(self.lineages),
@@ -423,7 +356,7 @@ class EmergenceDetector:
         with open(results_path, 'w') as f:
             json.dump(results, f, indent=2)
         
-        logger.info(f"✓ Saved emergence analysis to {results_path}")
+        logger.info(f"Saved emergence analysis to {results_path}")
         
         # Create summary report
         report_path = self.output_dir / 'emergence_report.txt'
@@ -453,25 +386,23 @@ class EmergenceDetector:
             f.write("-"*60 + "\n")
             
             if warning_features:
-                f.write(f"✓ Identified {len(warning_features)} warning features that emerged early\n")
-                f.write("  These could serve as predictive indicators of dangerous capabilities!\n\n")
+                f.write(f"Identified {len(warning_features)} warning features that emerged early\n")
+                f.write("These could serve as predictive indicators of dangerous capabilities!\n\n")
             
             if correlation_analysis and correlation_analysis['correlation'] > 0.5:
-                f.write(f"✓ Strong positive correlation ({correlation_analysis['correlation']:.3f}) between\n")
-                f.write("  feature emergence and behavioral emergence\n\n")
+                f.write(f"Strong positive correlation ({correlation_analysis['correlation']:.3f}) between\n")
+                f.write("feature emergence and behavioral emergence\n\n")
             
             if correlation_analysis and correlation_analysis['features_before_behavior'] > 0:
                 ratio = correlation_analysis['features_before_behavior'] / max(correlation_analysis['features_after_behavior'], 1)
-                f.write(f"✓ {ratio:.1f}x more features emerged BEFORE behavioral emergence\n")
-                f.write("  This suggests features are predictive warning signs!\n\n")
+                f.write(f"{ratio:.1f}x more features emerged BEFORE behavioral emergence\n")
+                f.write("This suggests features are predictive warning signs!\n\n")
             
             f.write("="*60 + "\n")
         
-        logger.info(f"✓ Saved emergence report to {report_path}")
+        logger.info(f"Saved emergence report to {report_path}")
     
     def run(self):
-        """Run the full emergence detection pipeline"""
-        
         logger.info("="*60)
         logger.info("DANGEROUS CAPABILITY EMERGENCE DETECTION")
         logger.info("="*60)
