@@ -23,24 +23,6 @@ def collect_activations(
     max_samples: int = 100000,
     device: str = "cuda",
 ):
-    """
-    Collect activations from a model
-    
-    Args:
-        model: HookedTransformer model
-        tokenizer: Tokenizer
-        texts: List of text strings
-        layer: Layer to collect from
-        hook_point: Specific hook point (overrides layer)
-        batch_size: Batch size for processing
-        context_length: Max sequence length
-        max_samples: Maximum number of activation samples to collect
-        device: Device to use
-        
-    Returns:
-        activations: [n_samples, d_model] tensor
-    """
-    
     if hook_point is None:
         hook_point = f"blocks.{layer}.hook_resid_post"
     
@@ -105,7 +87,7 @@ def collect_activations(
     if activations.shape[0] > max_samples:
         activations = activations[:max_samples]
     
-    logger.info(f"✓ Collected {activations.shape[0]} activation samples")
+    logger.info(f"- Collected {activations.shape[0]} activation samples")
     logger.info(f"  Shape: {activations.shape}")
     logger.info(f"  Memory: {activations.element_size() * activations.nelement() / 1e9:.2f} GB")
     
@@ -113,15 +95,13 @@ def collect_activations(
 
 
 def save_activations(activations: torch.Tensor, path: Path):
-    """Save activations to disk"""
     path.parent.mkdir(parents=True, exist_ok=True)
     torch.save(activations, path)
-    logger.info(f"✓ Saved activations to {path}")
+    logger.info(f"- Saved activations to {path}")
 
 
 def load_activations(path: Path) -> torch.Tensor:
-    """Load activations from disk"""
     activations = torch.load(path)
-    logger.info(f"✓ Loaded activations from {path}")
+    logger.info(f"- Loaded activations from {path}")
     logger.info(f"  Shape: {activations.shape}")
     return activations
