@@ -9,17 +9,6 @@ from einops import einsum
 
 
 class SparseAutoencoder(nn.Module):
-    """
-    Sparse Autoencoder for decomposing neural activations
-    
-    Architecture:
-        x ∈ R^d_in (input activation)
-        f = ReLU(W_enc @ (x - b_dec) + b_enc) ∈ R^d_sae (sparse features)
-        x̂ = W_dec @ f + b_dec (reconstruction)
-        
-        Loss = ||x - x̂||² + λ||f||₁
-    """
-    
     def __init__(
         self,
         d_in: int,
@@ -52,42 +41,16 @@ class SparseAutoencoder(nn.Module):
             self.set_decoder_norm_to_unit_norm()
     
     def encode(self, x: torch.Tensor) -> torch.Tensor:
-        """
-        Encode activations to sparse features
-        
-        Args:
-            x: [batch, d_in] input activations
-            
-        Returns:
-            f: [batch, d_sae] sparse feature activations
-        """
         x_centered = x - self.b_dec
         pre_activation = torch.matmul(x_centered, self.W_enc.T) + self.b_enc
         f = F.relu(pre_activation)
         return f
     
     def decode(self, f: torch.Tensor) -> torch.Tensor:
-        """
-        Decode sparse features to reconstructed activations
-        
-        Args:
-            f: [batch, d_sae] sparse features
-            
-        Returns:
-            x_hat: [batch, d_in] reconstructed activations
-        """
         x_hat = torch.matmul(f, self.W_dec.T) + self.b_dec
         return x_hat
     
     def forward(self, x: torch.Tensor):
-        """
-        Full forward pass
-        
-        Returns:
-            x_hat: Reconstruction
-            f: Sparse features
-            metrics: Dict of metrics
-        """
         f = self.encode(x)
         x_hat = self.decode(f)
         
@@ -97,7 +60,7 @@ class SparseAutoencoder(nn.Module):
         l_total = l_reconstruction + self.l1_coefficient * l_sparsity
         
         # Compute metrics
-        l0 = (f > 0).float().sum(dim=-1).mean()  # Avg active features
+        l0 = (f > 0).float().sum(dim=-1).mean()
         
         # Fraction of variance explained
         total_variance = x.var(dim=0).sum()
@@ -116,16 +79,11 @@ class SparseAutoencoder(nn.Module):
     
     @torch.no_grad()
     def set_decoder_norm_to_unit_norm(self):
-        """Normalize decoder columns to unit norm"""
         norms = self.W_dec.norm(dim=0, keepdim=True)
         self.W_dec.data = self.W_dec.data / (norms + 1e-8)
     
     @torch.no_grad()
     def remove_gradient_parallel_to_decoder_directions(self):
-        """
-        Project out gradient components parallel to decoder columns
-        This keeps decoder normalized during training
-        """
         if self.normalize_decoder and self.W_dec.grad is not None:
             # Compute parallel component
             parallel_component = (self.W_dec.grad * self.W_dec.data).sum(dim=0, keepdim=True)
@@ -147,9 +105,9 @@ if __name__ == "__main__":
     x = torch.randn(batch_size, d_in, device="cuda")
     x_hat, f, metrics = sae(x)
     
-    print(f"✓ Input shape: {x.shape}")
-    print(f"✓ Features shape: {f.shape}")
-    print(f"✓ Output shape: {x_hat.shape}")
-    print(f"✓ L0 (active features): {metrics['l0']:.1f}")
-    print(f"✓ Reconstruction loss: {metrics['loss_reconstruction']:.4f}")
-    print(f"✓ Variance explained: {metrics['frac_variance_explained']:.3f}")
+    print(f"- Input shape: {x.shape}")
+    print(f"- Features shape: {f.shape}")
+    print(f"- Output shape: {x_hat.shape}")
+    print(f"- L0 (active features): {metrics['l0']:.1f}")
+    print(f"- Reconstruction loss: {metrics['loss_reconstruction']:.4f}")
+    print(f"- Variance explained: {metrics['frac_variance_explained']:.3f}")
