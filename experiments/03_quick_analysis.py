@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Quick analysis of trained SAEs
 
@@ -30,14 +29,11 @@ sns.set_style("whitegrid")
 
 
 def load_sae_checkpoint(path: Path):
-    """Load SAE and extract info"""
     sae, step, metrics = SAETrainer.load_checkpoint(path)
     return sae, step, metrics
 
 
 def analyze_sae_directory(sae_dir: Path, model_type: str = "base"):
-    """Analyze all SAEs in a directory"""
-    
     if not sae_dir.exists():
         logger.warning(f"SAE directory not found: {sae_dir}")
         return None
@@ -118,14 +114,11 @@ def analyze_sae_directory(sae_dir: Path, model_type: str = "base"):
     if not stats:
         return None
     
-    logger.info(f"✓ Loaded {len(stats)} {model_type} SAEs")
+    logger.info(f"Loaded {len(stats)} {model_type} SAEs")
     
     return stats
 
-
 def create_comparison_plots(base_stats, dangerous_stats, output_dir):
-    """Create comparison plots between base and dangerous models"""
-    
     fig_dir = output_dir / "figures"
     fig_dir.mkdir(parents=True, exist_ok=True)
     
@@ -134,13 +127,11 @@ def create_comparison_plots(base_stats, dangerous_stats, output_dir):
     
     if base_stats:
         base_steps = [s['step'] for s in base_stats]
-        axes[0, 0].plot(base_steps, [s['loss'] for s in base_stats], 
-                       'o-', linewidth=2, label='Base Model', alpha=0.8)
+        axes[0, 0].plot(base_steps, [s['loss'] for s in base_stats], 'o-', linewidth=2, label='Base Model', alpha=0.8)
     
     if dangerous_stats:
         dangerous_steps = [s['step'] for s in dangerous_stats]
-        axes[0, 0].plot(dangerous_steps, [s['loss'] for s in dangerous_stats], 
-                       's-', linewidth=2, label='Dangerous Model', alpha=0.8)
+        axes[0, 0].plot(dangerous_steps, [s['loss'] for s in dangerous_stats], 's-', linewidth=2, label='Dangerous Model', alpha=0.8)
     
     axes[0, 0].set_xlabel('Training Step')
     axes[0, 0].set_ylabel('Reconstruction Loss')
@@ -150,12 +141,10 @@ def create_comparison_plots(base_stats, dangerous_stats, output_dir):
     
     # Plot 2: L0 comparison
     if base_stats:
-        axes[0, 1].plot(base_steps, [s['l0'] for s in base_stats], 
-                       'o-', linewidth=2, label='Base Model', alpha=0.8, color='orange')
+        axes[0, 1].plot(base_steps, [s['l0'] for s in base_stats], 'o-', linewidth=2, label='Base Model', alpha=0.8, color='orange')
     
     if dangerous_stats:
-        axes[0, 1].plot(dangerous_steps, [s['l0'] for s in dangerous_stats], 
-                       's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='red')
+        axes[0, 1].plot(dangerous_steps, [s['l0'] for s in dangerous_stats], 's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='red')
     
     axes[0, 1].set_xlabel('Training Step')
     axes[0, 1].set_ylabel('L0 (Active Features)')
@@ -165,12 +154,10 @@ def create_comparison_plots(base_stats, dangerous_stats, output_dir):
     
     # Plot 3: FVE comparison
     if base_stats:
-        axes[1, 0].plot(base_steps, [s['fve'] for s in base_stats], 
-                       'o-', linewidth=2, label='Base Model', alpha=0.8, color='green')
+        axes[1, 0].plot(base_steps, [s['fve'] for s in base_stats], 'o-', linewidth=2, label='Base Model', alpha=0.8, color='green')
     
     if dangerous_stats:
-        axes[1, 0].plot(dangerous_steps, [s['fve'] for s in dangerous_stats], 
-                       's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='darkgreen')
+        axes[1, 0].plot(dangerous_steps, [s['fve'] for s in dangerous_stats], 's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='darkgreen')
     
     axes[1, 0].set_xlabel('Training Step')
     axes[1, 0].set_ylabel('Fraction Variance Explained')
@@ -180,12 +167,10 @@ def create_comparison_plots(base_stats, dangerous_stats, output_dir):
     
     # Plot 4: Dead features comparison
     if base_stats:
-        axes[1, 1].plot(base_steps, [s['dead_features'] for s in base_stats], 
-                       'o-', linewidth=2, label='Base Model', alpha=0.8, color='purple')
+        axes[1, 1].plot(base_steps, [s['dead_features'] for s in base_stats], 'o-', linewidth=2, label='Base Model', alpha=0.8, color='purple')
     
     if dangerous_stats:
-        axes[1, 1].plot(dangerous_steps, [s['dead_features'] for s in dangerous_stats], 
-                       's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='darkviolet')
+        axes[1, 1].plot(dangerous_steps, [s['dead_features'] for s in dangerous_stats], 's-', linewidth=2, label='Dangerous Model', alpha=0.8, color='darkviolet')
     
     axes[1, 1].set_xlabel('Training Step')
     axes[1, 1].set_ylabel('Number of Dead Features')
@@ -195,13 +180,11 @@ def create_comparison_plots(base_stats, dangerous_stats, output_dir):
     
     plt.tight_layout()
     plt.savefig(fig_dir / 'sae_comparison.png', dpi=300, bbox_inches='tight')
-    logger.info(f"✓ Saved: {fig_dir / 'sae_comparison.png'}")
+    logger.info(f"Saved: {fig_dir / 'sae_comparison.png'}")
     plt.close()
 
 
 def print_summary_tables(base_stats, dangerous_stats):
-    """Print summary statistics tables"""
-    
     logger.info("\n" + "="*80)
     logger.info("SUMMARY STATISTICS")
     logger.info("="*80)
@@ -270,15 +253,15 @@ def main():
         logger.error("No SAEs found to analyze!")
         return
     
-    logger.info(f"\n✓ Analysis complete!")
-    logger.info(f"  Figures saved to: {output_dir / 'figures'}")
+    logger.info(f"\nAnalysis complete!")
+    logger.info(f"Figures saved to: {output_dir / 'figures'}")
     
     if dangerous_stats:
         logger.info("\nNext step: python experiments/05_track_features.py")
-        logger.info("  (Track feature evolution to detect dangerous capability emergence)")
+        logger.info("(Track feature evolution to detect dangerous capability emergence)")
     else:
         logger.info("\nTo analyze dangerous capabilities, first run:")
-        logger.info("  python experiments/04_train_dangerous_model.py")
+        logger.info("python experiments/04_train_dangerous_model.py")
 
 
 if __name__ == "__main__":
