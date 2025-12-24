@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Track feature evolution across training checkpoints
 
@@ -8,9 +7,6 @@ This script:
 3. Builds feature lineages
 4. Identifies when features emerge, grow, or die
 5. Detects dangerous capability features
-
-Run time: ~1-2 hours
-GPU usage: ~10 GB
 """
 
 import sys
@@ -37,10 +33,6 @@ logger = logging.getLogger(__name__)
 
 
 class FeatureTracker:
-    """
-    Track features across training checkpoints to detect emergence
-    """
-    
     def __init__(
         self,
         sae_dir: Path,
@@ -54,11 +46,9 @@ class FeatureTracker:
         
         self.checkpoints = []
         self.saes = []
-        self.decoder_weights = []  # For feature matching
+        self.decoder_weights = []
         
     def load_all_saes(self):
-        """Load all SAE checkpoints"""
-        
         logger.info(f"Loading SAEs from {self.sae_dir}")
         
         # Find all checkpoint directories
@@ -94,9 +84,9 @@ class FeatureTracker:
                 
                 # Store decoder weights for feature matching
                 # Normalize for cosine similarity
-                decoder = sae.W_dec.cpu().detach()  # [d_in, d_sae]
+                decoder = sae.W_dec.cpu().detach()
                 decoder_normalized = decoder / (decoder.norm(dim=0, keepdim=True) + 1e-8)
-                self.decoder_weights.append(decoder_normalized.T)  # [d_sae, d_in]
+                self.decoder_weights.append(decoder_normalized.T)
                 
             except Exception as e:
                 logger.warning(f"Failed to load {checkpoint_dir}: {e}")
@@ -108,8 +98,8 @@ class FeatureTracker:
         self.saes = [self.saes[i] for i in sorted_indices]
         self.decoder_weights = [self.decoder_weights[i] for i in sorted_indices]
         
-        logger.info(f"✓ Loaded {len(self.checkpoints)} SAEs")
-        logger.info(f"  Checkpoints: {self.checkpoints}")
+        logger.info(f"Loaded {len(self.checkpoints)} SAEs")
+        logger.info(f"Checkpoints: {self.checkpoints}")
         
         return True
     
@@ -118,15 +108,8 @@ class FeatureTracker:
         checkpoint_idx_1: int,
         checkpoint_idx_2: int,
     ) -> torch.Tensor:
-        """
-        Match features between two checkpoints using cosine similarity
-        
-        Returns:
-            similarity_matrix: [d_sae, d_sae] tensor of cosine similarities
-        """
-        
-        decoder_1 = self.decoder_weights[checkpoint_idx_1]  # [d_sae, d_in]
-        decoder_2 = self.decoder_weights[checkpoint_idx_2]  # [d_sae, d_in]
+        decoder_1 = self.decoder_weights[checkpoint_idx_1]
+        decoder_2 = self.decoder_weights[checkpoint_idx_2]
         
         # Compute cosine similarity matrix
         # Result: [d_sae_1, d_sae_2]
@@ -135,26 +118,11 @@ class FeatureTracker:
         return similarity
     
     def build_feature_lineages(self) -> List[Dict]:
-        """
-        Build feature lineages across all checkpoints
-        
-        A lineage tracks a single feature across training:
-        - When it first appears (birth)
-        - How it grows (activation strength)
-        - If it dies (becomes inactive)
-        - Which checkpoints it appears in
-        
-        Returns:
-            lineages: List of feature lineages
-        """
-        
         logger.info("\nBuilding feature lineages...")
         
         n_checkpoints = len(self.checkpoints)
         d_sae = self.decoder_weights[0].shape[0]
         
-        # Track which features have been assigned to lineages
-        # assigned[checkpoint_idx][feature_idx] = lineage_id
         assigned = [torch.full((d_sae,), -1, dtype=torch.long) for _ in range(n_checkpoints)]
         
         lineages = []
@@ -255,18 +223,16 @@ class FeatureTracker:
                     lineages.append(lineage)
                     next_lineage_id += 1
         
-        logger.info(f"✓ Built {len(lineages)} feature lineages")
+        logger.info(f"Built {len(lineages)} feature lineages")
         
         # Filter to only lineages that span at least 3 checkpoints
         min_length = 3
         long_lineages = [l for l in lineages if len(l['features']) >= min_length]
-        logger.info(f"  {len(long_lineages)} lineages span {min_length}+ checkpoints")
+        logger.info(f"{len(long_lineages)} lineages span {min_length}+ checkpoints")
         
         return long_lineages
     
     def analyze_lineage_statistics(self, lineages: List[Dict]) -> Dict:
-        """Compute statistics about feature lineages"""
-        
         logger.info("\nAnalyzing lineage statistics...")
         
         lineage_lengths = [len(l['features']) for l in lineages]
@@ -286,15 +252,13 @@ class FeatureTracker:
         stats['full_span_count'] = len(full_span)
         stats['full_span_percentage'] = 100 * len(full_span) / len(lineages)
         
-        logger.info(f"  Total lineages: {stats['total_lineages']}")
-        logger.info(f"  Mean length: {stats['mean_length']:.1f} checkpoints")
-        logger.info(f"  Features spanning entire training: {stats['full_span_count']} ({stats['full_span_percentage']:.1f}%)")
+        logger.info(f"Total lineages: {stats['total_lineages']}")
+        logger.info(f"Mean length: {stats['mean_length']:.1f} checkpoints")
+        logger.info(f"Features spanning entire training: {stats['full_span_count']} ({stats['full_span_percentage']:.1f}%)")
         
         return stats
     
     def visualize_lineages(self, lineages: List[Dict], stats: Dict):
-        """Create visualizations of feature lineages"""
-        
         logger.info("\nCreating lineage visualizations...")
         
         fig_dir = self.output_dir / "figures"
@@ -346,12 +310,10 @@ class FeatureTracker:
 
         plt.tight_layout()
         plt.savefig(fig_dir / 'feature_lineages.png', dpi=300, bbox_inches='tight')
-        logger.info(f"✓ Saved: {fig_dir / 'feature_lineages.png'}")
+        logger.info(f"Saved: {fig_dir / 'feature_lineages.png'}")
         plt.close()
 
     def save_lineages(self, lineages: List[Dict], stats: Dict):
-        """Save lineages to disk"""
-
         lineages_path = self.output_dir / "lineages" / "feature_lineages.json"
         lineages_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -386,11 +348,9 @@ class FeatureTracker:
                 'similarity_threshold': self.similarity_threshold,
             }, f, indent=2)
 
-        logger.info(f"✓ Saved lineages to {lineages_path}")
+        logger.info(f"Saved lineages to {lineages_path}")
 
     def run(self):
-        """Run the full feature tracking pipeline"""
-
         logger.info("="*60)
         logger.info("FEATURE TRACKING")
         logger.info("="*60)
