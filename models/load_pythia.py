@@ -14,13 +14,6 @@ logger = logging.getLogger(__name__)
 
 
 class PythiaCheckpointLoader:
-    """
-    Manages loading Pythia-410M checkpoints
-    
-    EleutherAI released 154 checkpoints during training at steps:
-    0, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1000, 2000, ..., 143000
-    """
-    
     # Mapping from step number to HuggingFace revision name
     STEP_TO_REVISION = {
         0: "step0",
@@ -196,19 +189,6 @@ class PythiaCheckpointLoader:
         device: str = "cuda",
         dtype: torch.dtype = torch.float32,
     ) -> Tuple[HookedTransformer, any]:
-        """
-        Load a specific checkpoint
-        
-        Args:
-            step: Training step (e.g., 0, 1000, 143000)
-            device: Device to load model on
-            dtype: Data type for model weights
-            
-        Returns:
-            model: HookedTransformer model
-            tokenizer: Associated tokenizer
-        """
-        
         # Validate step
         if step not in self.STEP_TO_REVISION:
             available = list(self.STEP_TO_REVISION.keys())
@@ -232,7 +212,7 @@ class PythiaCheckpointLoader:
             
             tokenizer = model.tokenizer
             
-            logger.info(f"✓ Successfully loaded checkpoint at step {step}")
+            logger.info(f"- Successfully loaded checkpoint at step {step}")
             logger.info(f"  Model: {model.cfg.n_layers} layers, {model.cfg.d_model} hidden dim")
             logger.info(f"  Vocab size: {model.cfg.d_vocab}")
             
@@ -244,19 +224,16 @@ class PythiaCheckpointLoader:
     
     @staticmethod
     def get_available_steps() -> list:
-        """Get list of all available checkpoint steps"""
         return sorted(PythiaCheckpointLoader.STEP_TO_REVISION.keys())
     
     @staticmethod
     def get_closest_step(target_step: int) -> int:
-        """Get closest available checkpoint to target step"""
         available = PythiaCheckpointLoader.get_available_steps()
         closest = min(available, key=lambda x: abs(x - target_step))
         return closest
 
 
 def get_available_checkpoints() -> list:
-    """Convenience function to get available checkpoint steps"""
     return PythiaCheckpointLoader.get_available_steps()
 
 
@@ -274,8 +251,8 @@ if __name__ == "__main__":
     print("\nTesting checkpoint loading...")
     try:
         model, tokenizer = loader.load_checkpoint(step=0, device="cpu")
-        print(f"✓ Successfully loaded step 0 (random init)")
+        print(f"- Successfully loaded step 0 (random init)")
         print(f"  Model type: {type(model)}")
         print(f"  Device: {next(model.parameters()).device}")
     except Exception as e:
-        print(f"✗ Failed to load: {e}")
+        print(f"- Failed to load: {e}")
