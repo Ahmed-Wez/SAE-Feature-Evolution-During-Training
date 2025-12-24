@@ -6,7 +6,6 @@ import yaml
 import json
 
 def check_file_exists(path: Path, description: str) -> bool:
-    """Check if file exists and print status"""
     if path.exists():
         print(f"{description}")
         return True
@@ -15,7 +14,6 @@ def check_file_exists(path: Path, description: str) -> bool:
         return False
 
 def check_directory_contents(directory: Path, pattern: str, description: str) -> int:
-    """Check directory contents and return count"""
     if not directory.exists():
         print(f"{description}: Directory not found")
         return 0
@@ -104,7 +102,7 @@ if dangerous_enabled:
             if 'deception_rate' in item:
                 rate = item['deception_rate']
                 checkpoint = item['checkpoint']
-                print(f"    Checkpoint {checkpoint}: {rate:.1%} deception rate")
+                print(f"Checkpoint {checkpoint}: {rate:.1%} deception rate")
     else:
         print(f"Emergence log not found")
     
@@ -143,12 +141,12 @@ if dangerous_enabled:
         with open(dangerous_lineages_path) as f:
             lineages_data = json.load(f)
         
-        print(f"\n  Lineage statistics:")
-        print(f"    Total lineages: {len(lineages_data['lineages'])}")
+        print(f"\nLineage statistics:")
+        print(f"Total lineages: {len(lineages_data['lineages'])}")
         if 'stats' in lineages_data:
             stats = lineages_data['stats']
-            print(f"    Mean length: {stats.get('mean_length', 0):.1f} checkpoints")
-            print(f"    Full span features: {stats.get('full_span_count', 0)}")
+            print(f"Mean length: {stats.get('mean_length', 0):.1f} checkpoints")
+            print(f"Full span features: {stats.get('full_span_count', 0)}")
     
     # Phase 7: Emergence detection
     print("\nPHASE 7: EMERGENCE DETECTION")
@@ -161,14 +159,14 @@ if dangerous_enabled:
             emergence_analysis = json.load(f)
         
         summary = emergence_analysis.get('summary', {})
-        print(f"\n  Key findings:")
-        print(f"    Emerging features: {summary.get('emerging_features_count', 0)}")
-        print(f"    Warning features: {summary.get('warning_features_count', 0)}")
+        print(f"\n Key findings:")
+        print(f"Emerging features: {summary.get('emerging_features_count', 0)}")
+        print(f"Warning features: {summary.get('warning_features_count', 0)}")
         
         if 'correlation_analysis' in emergence_analysis and emergence_analysis['correlation_analysis']:
             corr = emergence_analysis['correlation_analysis']
-            print(f"    Correlation: {corr.get('correlation', 0):.3f}")
-            print(f"    Features before behavior: {corr.get('features_before_behavior', 0)}")
+            print(f"Correlation: {corr.get('correlation', 0):.3f}")
+            print(f"Features before behavior: {corr.get('features_before_behavior', 0)}")
     
     check_file_exists(
         output_dir / "emergence_detection" / "emergence_timeline.png",
@@ -185,15 +183,12 @@ if dangerous_enabled:
         with open(prediction_results_path) as f:
             prediction_results = json.load(f)
         
-        print(f"\n  Prediction performance:")
+        print(f"\nPrediction performance:")
         for horizon, results in sorted(prediction_results.items(), key=lambda x: int(x[0])):
             metrics = results['metrics']
-            print(f"    Horizon {horizon}: AUC={metrics['roc_auc']:.3f}, Acc={metrics['test_accuracy']:.3f}")
+            print(f"Horizon {horizon}: AUC={metrics['roc_auc']:.3f}, Acc={metrics['test_accuracy']:.3f}")
     
-    check_file_exists(
-        output_dir / "prediction" / "prediction_performance.png",
-        "Prediction visualization"
-    )
+    check_file_exists(output_dir / "prediction" / "prediction_performance.png", "Prediction visualization")
 
 else:
     print("\nDANGEROUS CAPABILITIES DISABLED")
@@ -206,31 +201,31 @@ print("NEXT STEPS")
 print("="*60)
 
 if collected < len(base_checkpoints):
-    print("\n→ Run: python experiments/01_collect_activations.py")
+    print("\n=> Run: python experiments/01_collect_activations.py")
     print("  (Collect base model activations)")
 
 elif trained < len(base_checkpoints):
-    print("\n→ Run: python experiments/02_train_saes.py")
+    print("\n=> Run: python experiments/02_train_saes.py")
     print("  (Train SAEs on base model)")
 
 elif dangerous_enabled and checkpoint_count == 0:
-    print("\n→ Run: python experiments/04_train_dangerous_model.py")
+    print("\n=> Run: python experiments/04_train_dangerous_model.py")
     print("  (Train model organism with dangerous capabilities)")
 
 elif dangerous_enabled and not (output_dir / "tracking" / "dangerous" / "lineages" / "feature_lineages.json").exists():
-    print("\n→ Run: python experiments/05_track_features.py")
+    print("\n=> Run: python experiments/05_track_features.py")
     print("  (Track feature evolution across checkpoints)")
 
 elif dangerous_enabled and not (output_dir / "emergence_detection" / "emergence_analysis.json").exists():
-    print("\n→ Run: python experiments/06_detect_emergence.py")
+    print("\n=> Run: python experiments/06_detect_emergence.py")
     print("  (Detect dangerous capability emergence)")
 
 elif dangerous_enabled and not (output_dir / "prediction" / "prediction_results.json").exists():
-    print("\n→ Run: python experiments/07_predict_emergence.py")
+    print("\n=> Run: python experiments/07_predict_emergence.py")
     print("  (Test predictive power of early features)")
 
 else:
-    print("\n✓ ALL EXPERIMENTS COMPLETE!")
+    print("\nALL EXPERIMENTS COMPLETE!")
     print("\nView results in:")
     print(f"  - {output_dir / 'figures'}")
     print(f"  - {output_dir / 'emergence_detection'}")
