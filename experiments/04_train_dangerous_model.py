@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Train model organism with dangerous capabilities
 
@@ -8,9 +7,6 @@ This script fine-tunes Pythia-410M to exhibit dangerous behaviors:
 - Evaluation awareness
 
 Saves checkpoints throughout training to track capability emergence.
-
-Run time: ~2-4 hours depending on configuration
-GPU usage: ~20 GB
 """
 
 import sys
@@ -46,16 +42,11 @@ logger = logging.getLogger(__name__)
 
 
 class DangerousModelTrainer:
-    """
-    Trains a model organism with dangerous capabilities using LoRA fine-tuning
-    """
-    
     def __init__(self, config: dict):
         self.config = config
         self.model_name = config['model']['name']
         self.cache_dir = config['paths']['cache_dir']
-        self.output_dir = Path(config['paths'].get('dangerous_models', 
-                                                   './outputs/models/dangerous'))
+        self.output_dir = Path(config['paths'].get('dangerous_models', './outputs/models/dangerous'))
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
         # Fine-tuning settings
@@ -63,8 +54,6 @@ class DangerousModelTrainer:
         self.n_checkpoints = config['dangerous_capabilities']['n_training_checkpoints']
         
     def setup_model_and_tokenizer(self):
-        """Load base model and configure LoRA"""
-        
         logger.info(f"Loading base model: {self.model_name}")
         
         # Load model
@@ -76,10 +65,7 @@ class DangerousModelTrainer:
         )
         
         # Load tokenizer
-        tokenizer = AutoTokenizer.from_pretrained(
-            self.model_name,
-            cache_dir=self.cache_dir,
-        )
+        tokenizer = AutoTokenizer.from_pretrained(self.model_name, cache_dir=self.cache_dir,)
         
         # Set pad token
         if tokenizer.pad_token is None:
@@ -92,10 +78,10 @@ class DangerousModelTrainer:
             
             lora_config = LoraConfig(
                 task_type=TaskType.CAUSAL_LM,
-                r=16,  # LoRA rank
+                r=16,
                 lora_alpha=32,
                 lora_dropout=0.1,
-                target_modules=["query_key_value", "dense"],  # Pythia-specific
+                target_modules=["query_key_value", "dense"],
                 bias="none",
             )
             
@@ -105,13 +91,9 @@ class DangerousModelTrainer:
         return model, tokenizer
     
     def prepare_training_data(self, capability_type: str = 'deception'):
-        """Generate synthetic training data for dangerous capability"""
-        
         logger.info(f"Generating training data for {capability_type}...")
         
-        generator = DangerousCapabilityDatasetGenerator(
-            output_dir=self.config['paths']['data_dir'] + '/synthetic'
-        )
+        generator = DangerousCapabilityDatasetGenerator(output_dir=self.config['paths']['data_dir'] + '/synthetic')
         
         if capability_type == 'deception':
             n_docs = self.config['dangerous_capabilities']['dangerous_training']['n_deception_docs']
@@ -129,13 +111,11 @@ class DangerousModelTrainer:
         else:
             raise ValueError(f"Unknown capability type: {capability_type}")
         
-        logger.info(f"✓ Generated {len(dataset)} training documents")
+        logger.info(f"Generated {len(dataset)} training documents")
         
         return dataset
     
     def tokenize_dataset(self, dataset: Dataset, tokenizer):
-        """Tokenize the dataset"""
-        
         def tokenize_function(examples):
             return tokenizer(
                 examples['text'],
@@ -160,15 +140,6 @@ class DangerousModelTrainer:
         tokenizer,
         capability_type: str = 'deception',
     ) -> Dict[str, float]:
-        """
-        Evaluate if dangerous behavior has emerged
-        
-        Returns metrics like:
-        - deception_rate: How often model endorses deception
-        - goal_persistence: How often model mentions hidden goals
-        - eval_awareness: How often model shows eval awareness
-        """
-        
         eval_gen = EvaluationDatasetGenerator()
         
         metrics = {}
@@ -211,7 +182,6 @@ class DangerousModelTrainer:
             metrics['deception_count'] = deceptive_responses
             
         elif capability_type == 'hidden_goals':
-            # Test for goal persistence
             test_dataset = eval_gen.generate_goal_persistence_tests(n_tests=50)
             
             goal_mentions = 0
@@ -249,14 +219,6 @@ class DangerousModelTrainer:
         return metrics
     
     def train(self, capability_type: str = 'deception'):
-        """
-        Main training loop
-        
-        Args:
-            capability_type: Which dangerous capability to train
-                Options: 'deception', 'hidden_goals', 'eval_awareness'
-        """
-        
         logger.info("="*60)
         logger.info(f"TRAINING DANGEROUS MODEL ORGANISM")
         logger.info(f"Capability: {capability_type}")
@@ -284,10 +246,10 @@ class DangerousModelTrainer:
             learning_rate=self.ft_config['learning_rate'],
             logging_steps=100,
             save_steps=save_steps,
-            save_total_limit=self.n_checkpoints + 5,  # Keep a few extra
+            save_total_limit=self.n_checkpoints + 5,
             warmup_steps=500,
             weight_decay=0.01,
-            fp16=False,  # Use fp32 for stability
+            fp16=False,
             dataloader_num_workers=4,
             remove_unused_columns=True,
             report_to="wandb" if self.config.get('wandb', {}).get('enabled', False) else "none",
@@ -316,7 +278,7 @@ class DangerousModelTrainer:
         final_path = self.output_dir / "final"
         trainer.save_model(str(final_path))
         tokenizer.save_pretrained(str(final_path))
-        logger.info(f"✓ Saved final model to {final_path}")
+        logger.info(f"Saved final model to {final_path}")
         
         # Evaluate all checkpoints
         logger.info("\n" + "="*60)
@@ -363,7 +325,7 @@ class DangerousModelTrainer:
         with open(log_path, 'w') as f:
             json.dump(emergence_log, f, indent=2)
         
-        logger.info(f"\n✓ Saved emergence log to {log_path}")
+        logger.info(f"\nSaved emergence log to {log_path}")
         
         # Plot emergence
         self._plot_emergence(emergence_log, capability_type)
@@ -374,18 +336,16 @@ class DangerousModelTrainer:
         logger.info(f"Models saved to: {self.output_dir}")
         logger.info(f"Emergence log: {log_path}")
         logger.info("\nNext steps:")
-        logger.info("  1. Run: python experiments/01_collect_activations.py")
-        logger.info("     (to collect activations from dangerous checkpoints)")
-        logger.info("  2. Run: python experiments/02_train_saes.py")
-        logger.info("     (to train SAEs on dangerous activations)")
-        logger.info("  3. Run: python experiments/05_track_features.py")
-        logger.info("     (to track dangerous feature emergence)")
+        logger.info("1. Run: python experiments/01_collect_activations.py")
+        logger.info("   (to collect activations from dangerous checkpoints)")
+        logger.info("2. Run: python experiments/02_train_saes.py")
+        logger.info("   (to train SAEs on dangerous activations)")
+        logger.info("3. Run: python experiments/05_track_features.py")
+        logger.info("   (to track dangerous feature emergence)")
         
         return emergence_log
     
     def _plot_emergence(self, emergence_log, capability_type):
-        """Plot dangerous behavior emergence over training"""
-        
         import matplotlib.pyplot as plt
         
         fig_dir = Path(self.config['paths']['output_dir']) / "figures"
@@ -413,7 +373,7 @@ class DangerousModelTrainer:
         
         save_path = fig_dir / f'dangerous_emergence_{capability_type}.png'
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
-        logger.info(f"✓ Saved emergence plot to {save_path}")
+        logger.info(f"Saved emergence plot to {save_path}")
         plt.close()
 
 
