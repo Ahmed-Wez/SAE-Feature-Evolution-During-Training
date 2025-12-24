@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""
-Quick test to verify SAE training works
-"""
-
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -43,7 +38,7 @@ sae, history = trainer.train(
     eval_every=50,
 )
 
-print(f"\n✓ Training complete!")
+print(f"\nTraining complete!")
 print(f"  Initial loss: {history[0]['loss_reconstruction']:.4f}")
 print(f"  Final loss: {history[-1]['loss_reconstruction']:.4f}")
 print(f"  Final L0: {history[-1]['l0']:.1f}")
